@@ -1,1 +1,0 @@
-Proyecto decorativo landing
