@@ -23,9 +23,8 @@
       background:rgba(30,50,30,0.7);
       color:white;
       display:flex;
-      justify-content:center;
+      justify-content:space-between;
       align-items:center;
-      gap:80px;
       z-index:1000;
       backdrop-filter:blur(10px);
       transition:all 0.4s ease;
@@ -35,9 +34,7 @@
       color:#1e3d2b;
       box-shadow:0 2px 10px rgba(0,0,0,0.1);
     }
-    header .logo {
-      position:absolute;
-      left:40px;
+    .logo {
       font-family:'Playfair Display', serif;
       font-size:1.7rem;
       color:white;
@@ -47,6 +44,8 @@
     header.scrolled .logo {color:#1e3d2b;}
     nav {
       display:flex;
+      justify-content:center;
+      flex:1;
       gap:30px;
     }
     nav a {
@@ -77,7 +76,7 @@
     .hero-content {
       position:relative;
       z-index:2;
-      max-width:800px;
+      max-width:850px;
       padding:0 20px;
     }
     .hero h1 {
@@ -91,7 +90,155 @@
       line-height:1.6;
     }
     .btn {
-      background:#5e8453;
+      background:#7ba46b;
       color:white;
+      padding:12px 30px;
+      border-radius:25px;
+      text-decoration:none;
+      font-weight:600;
+      transition:background 0.3s;
+    }
+    .btn:hover {background:#5e8453;}
 
-    
+    /* SECCION VIDEO */
+    .video-section {
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:center;
+      padding:100px 100px;
+      gap:50px;
+      background:white;
+    }
+    .video-box {
+      flex:1 1 380px;
+      border-radius:15px;
+      overflow:hidden;
+      box-shadow:0 4px 15px rgba(0,0,0,0.1);
+    }
+    .video-box iframe {
+      width:100%;
+      height:250px;
+      border:none;
+    }
+    .video-text {
+      flex:1 1 520px;
+      color:#2a2a2a;
+    }
+    .video-text h2 {
+      font-family:'Playfair Display', serif;
+      font-size:2rem;
+      color:#1e3d2b;
+      margin-bottom:15px;
+    }
+    .video-text p {
+      font-size:1rem;
+      line-height:1.8;
+      margin-bottom:25px;
+      color:#444;
+    }
+
+    /* FOOTER */
+    footer {
+      background:#1e3d2b;
+      color:#dce3d4;
+      text-align:center;
+      padding:50px 20px;
+    }
+    footer a {color:#a7ce90;text-decoration:none;}
+
+    /* BOTON FLOTANTE */
+    .float-buttons {
+      position:fixed;
+      bottom:25px;
+      right:25px;
+      z-index:999;
+    }
+    .float-buttons a {
+      width:70px;
+      height:70px;
+      border-radius:50%;
+      background:#7ba46b;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-size:15px;
+      font-weight:600;
+      text-align:center;
+      text-decoration:none;
+      box-shadow:0 4px 10px rgba(0,0,0,0.3);
+      transition:transform 0.3s, background 0.3s;
+    }
+    .float-buttons a:hover {
+      background:#5e8453;
+      transform:scale(1.05);
+    }
+
+    @media(max-width:900px){
+      header {padding:15px 25px;}
+      nav {gap:20px;}
+      .hero h1 {font-size:2.3rem;}
+      .hero p {font-size:1rem;}
+      .video-section {padding:60px 30px;}
+      .video-box iframe {height:220px;}
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="logo">Decorativo Panamá</div>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#video">Video</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <h1>Elegancia natural que transforma espacios</h1>
+      <p>Inspirados en la belleza del entorno, transformamos interiores con equilibrio y arte.  
+      Materiales nobles, texturas únicas y colores que respiran naturaleza.</p>
+      <a href="#video" class="btn">Explorar Inspiración</a>
+    </div>
+  </section>
+
+  <section class="video-section" id="video">
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/vzv4ePyhP5Q" title="Decorativo Panamá" allowfullscreen></iframe>
+    </div>
+    <div class="video-text">
+      <h2>Calidad excepcional en cada detalle</h2>
+      <p>
+        En <strong>Decorativo Panamá</strong> creemos que la elegancia nace de la armonía entre técnica, arte y naturaleza.  
+        Cada instalación refleja nuestro compromiso con la precisión, la durabilidad y el diseño estético.  
+        Ya sea un proyecto residencial o corporativo, nuestro objetivo es superar expectativas y brindar una experiencia visual única.
+      </p>
+      <a href="https://wa.me/50769257477?text=Hola!%20Deseo%20cotizar%20un%20proyecto%20decorativo" class="btn" target="_blank">💬 Cotizar ahora</a>
+    </div>
+  </section>
+
+  <footer id="contacto">
+    <p>📍 Plaza Royal Park, Local 15Ab – A lado de Figura Rostro, Av. Ernesto T. Lefevre</p>
+    <p>📞 <a href="tel:+50769257477">+507 6925-7477</a> | ✉️ info@decorativopanama.com</p>
+    <p>© 2025 Decorativo Panamá. Todos los derechos reservados.</p>
+  </footer>
+
+  <div class="float-buttons">
+    <a href="https://wa.me/50769257477?text=Hola!%20Deseo%20cotizar%20un%20proyecto%20decorativo" target="_blank">💬<br>Cotizar</a>
+  </div>
+
+  <script>
+    window.addEventListener("scroll", function(){
+      const header = document.getElementById("header");
+      if(window.scrollY > 100){
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+  </script>
+</body>
+</html>
