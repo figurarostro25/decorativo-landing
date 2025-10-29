@@ -5,221 +5,212 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Decorativo Panamá - Elegancia Natural</title>
   <meta name="description" content="Decorativo Panamá: diseño artístico y natural en interiores. Papeles tapiz, murales, persianas, techos y gypsum decorativo.">
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@300;500;700&display=swap');
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Montserrat',sans-serif;background:#f5f7f4;color:#2a2a2a;overflow-x:hidden;}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Montserrat',sans-serif;background:#f5f7f4;color:#2a2a2a;overflow-x:hidden}
 
-    /* HEADER */
+    /* ===== HEADER ===== */
     header{
-      position:fixed;top:0;left:0;width:100%;
-      background:rgba(30,50,30,0.7);
-      backdrop-filter:blur(8px);
-      color:white;
-      display:flex;justify-content:space-between;align-items:center;
-      padding:15px 40px;z-index:1000;transition:all .3s ease;
+      position:fixed;inset:0 0 auto 0;height:64px;
+      background:rgba(30,50,30,.72);backdrop-filter:blur(8px);
+      z-index:1000;color:#fff
     }
-    .logo{
-      font-family:'Playfair Display',serif;
-      font-size:1.7rem;font-weight:600;
+    .header-inner{
+      max-width:1200px;margin:0 auto;height:64px;padding:0 20px;
+      display:grid;grid-template-columns:1fr auto 1fr;align-items:center
     }
-    nav{display:flex;gap:30px;}
-    nav a{text-decoration:none;color:inherit;font-weight:500;}
-    nav a:hover{color:#a8c686;}
-    header.scrolled{background:white;color:#1e3d2b;box-shadow:0 2px 10px rgba(0,0,0,0.1);}
-    header.scrolled .logo{color:#1e3d2b;}
+    .logo{font-family:'Playfair Display',serif;font-weight:600;font-size:1.6rem}
+    nav{display:flex;gap:28px;justify-content:center}
+    nav a{color:inherit;text-decoration:none;font-weight:500}
+    nav a:hover{color:#a8c686}
+    .header-spacer{justify-self:end}
+    .scrolled{background:#fff !important;color:#1e3d2b}
+    .scrolled .logo{color:#1e3d2b}
+    .scrolled nav a{color:#1e3d2b}
+
+    /* móvil: ocultar nav y centrar logo */
     @media(max-width:900px){
-      nav{display:none;}
-      header{justify-content:center;}
+      .header-inner{grid-template-columns:1fr;justify-items:center}
+      nav,.header-spacer{display:none}
     }
 
-    /* HERO / CARRUSEL */
-    .hero{
-      margin-top:70px;
-      position:relative;
-      width:100%;
-      height:56vw;max-height:550px;overflow:hidden;
-    }
-    .slides{display:flex;width:300%;animation:slide 18s infinite;}
-    .slides img{width:100%;height:auto;flex:1;object-fit:cover;}
+    /* ===== HERO / CARRUSEL 16:9 ===== */
+    .hero{margin-top:64px;position:relative;width:100%;height:56vw;max-height:540px;overflow:hidden}
+    .slides{display:flex;width:300%;height:100%;animation:slide 18s infinite}
+    .slides img{width:100%;height:100%;object-fit:cover;flex:1}
     @keyframes slide{
-      0%{transform:translateX(0);}
-      33%{transform:translateX(-100%);}
-      66%{transform:translateX(-200%);}
-      100%{transform:translateX(0);}
+      0%{transform:translateX(0)} 33%{transform:translateX(-100%)} 66%{transform:translateX(-200%)} 100%{transform:translateX(0)}
     }
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.45),rgba(0,0,0,.25))}
     .hero-text{
-      position:absolute;top:50%;left:50%;
-      transform:translate(-50%,-50%);
-      text-align:center;color:white;
-      text-shadow:0 2px 8px rgba(0,0,0,0.7);
-      z-index:2;
+      position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      text-align:center;color:#fff;padding:0 16px;text-shadow:0 2px 8px rgba(0,0,0,.6)
     }
-    .hero-text h1{
-      font-family:'Playfair Display',serif;
-      font-size:2.5rem;margin-bottom:10px;
-    }
-    .hero-text p{font-size:1.1rem;margin-bottom:20px;}
-    .btn{
-      background:#7ba46b;color:white;
-      padding:10px 25px;border-radius:25px;
-      text-decoration:none;font-weight:600;
-    }
-    .btn:hover{background:#5e8453;}
+    .hero-text h1{font-family:'Playfair Display',serif;font-size:2.6rem;margin-bottom:10px}
+    .hero-text p{font-size:1.1rem;margin-bottom:18px}
+    .btn{background:#7ba46b;color:#fff;padding:10px 24px;border-radius:24px;text-decoration:none;font-weight:600}
+    .btn:hover{background:#5e8453}
 
-    /* VIDEO SECCIÓN */
-    .video-section{
-      display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
-      gap:50px;padding:80px 100px;background:white;
-    }
-    .video-box{
-      flex:1 1 380px;border-radius:15px;overflow:hidden;
-      box-shadow:0 4px 15px rgba(0,0,0,0.1);
-    }
-    .video-box iframe{width:100%;height:250px;border:none;}
-    .video-text{flex:1 1 520px;color:#2a2a2a;}
-    .video-text h2{
-      font-family:'Playfair Display',serif;font-size:2rem;
-      color:#1e3d2b;margin-bottom:15px;
-    }
-    .video-text p{font-size:1rem;line-height:1.8;margin-bottom:25px;color:#444;}
+    /* ===== CONTENEDOR GENERAL ===== */
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
 
-    /* SERVICIOS */
-    #servicios{
-      padding:80px 60px;background:#f9faf7;text-align:center;
-    }
-    #servicios h2{
-      font-family:'Playfair Display',serif;
-      font-size:2rem;color:#1e3d2b;margin-bottom:20px;
-    }
-    .servicios{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;margin-top:40px;
-    }
-    .servicio{
-      position:relative;border-radius:10px;overflow:hidden;
-      transition:transform .3s;
-    }
-    .servicio:hover{transform:translateY(-5px);}
-    .servicio img{
-      width:100%;height:250px;object-fit:cover;
-      filter:brightness(0.85);
-    }
-    .servicio h3{
-      position:absolute;bottom:15px;left:20px;
-      color:white;font-family:'Playfair Display',serif;font-size:1.2rem;
-      text-shadow:0 2px 5px rgba(0,0,0,0.6);
-    }
+    /* ===== VIDEO + TEXTO (16:9 real) ===== */
+    .video-section{background:#fff;padding:80px 0}
+    .video-grid{display:flex;flex-wrap:wrap;gap:48px;align-items:center;justify-content:center}
+    .video-box{flex:1 1 560px;min-width:320px;max-width:820px}
+    .video-embed{position:relative;width:100%;padding-top:56.25%;border-radius:15px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.1)}
+    .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    .video-text{flex:1 1 460px;min-width:300px}
+    .video-text h2{font-family:'Playfair Display',serif;color:#1e3d2b;font-size:2rem;margin-bottom:12px}
+    .video-text p{color:#444;line-height:1.8;margin-bottom:20px}
 
-    /* FOOTER */
-    footer{
-      background:linear-gradient(160deg,#1e3d2b,#2c533d);
-      color:#e8eee8;text-align:center;padding:70px 20px;
-    }
-    footer h3{
-      font-family:'Playfair Display',serif;
-      font-size:1.6rem;margin-bottom:15px;color:#cfe8c9;
-    }
-    footer p{margin:10px 0;line-height:1.7;}
-    footer a{color:#c0e0b8;text-decoration:none;}
-    footer a:hover{color:#fff;}
-    .footer-divider{
-      width:80%;height:1px;background:rgba(255,255,255,0.2);
-      margin:25px auto;
-    }
-    .footer-bottom{font-size:0.85rem;color:#cfd4c9;margin-top:20px;}
+    /* ===== SERVICIOS ===== */
+    #servicios{background:#f9faf7;padding:80px 0;text-align:center}
+    #servicios h2{font-family:'Playfair Display',serif;color:#1e3d2b;font-size:2rem;margin-bottom:18px}
+    .servicios{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:32px}
+    .servicio{position:relative;border-radius:10px;overflow:hidden;transition:transform .28s ease}
+    .servicio:hover{transform:translateY(-4px)}
+    .servicio img{width:100%;height:230px;object-fit:cover;filter:brightness(.86)}
+    .servicio h3{position:absolute;left:14px;bottom:14px;color:#fff;font-family:'Playfair Display',serif;font-size:1.15rem;text-shadow:0 2px 6px rgba(0,0,0,.55)}
 
-    /* BOTÓN FLOTANTE */
-    .float-buttons{
-      position:fixed;bottom:25px;right:25px;z-index:999;
-    }
-    .float-buttons a{
-      width:70px;height:70px;border-radius:50%;
-      background:#7ba46b;color:white;
-      display:flex;align-items:center;justify-content:center;
-      font-size:15px;font-weight:600;text-align:center;text-decoration:none;
-      box-shadow:0 4px 10px rgba(0,0,0,0.3);
-      transition:transform .3s,background .3s;
-    }
-    .float-buttons a:hover{background:#5e8453;transform:scale(1.05);}
+    /* ===== FOOTER ===== */
+    footer{background:linear-gradient(160deg,#1e3d2b,#2c533d);color:#e8eee8;text-align:center;padding:64px 0}
+    footer h3{font-family:'Playfair Display',serif;color:#cfe8c9;font-size:1.55rem;margin-bottom:10px}
+    footer p{margin:8px 0;line-height:1.7}
+    footer a{color:#c0e0b8;text-decoration:none}
+    footer a:hover{color:#fff}
+    .footer-divider{width:78%;height:1px;background:rgba(255,255,255,.22);margin:22px auto}
+    .footer-bottom{font-size:.9rem;color:#cfd4c9;margin-top:8px}
 
+    /* ===== BOTÓN WHATSAPP (móvil) ===== */
+    .wa-float{
+      position:fixed;right:14px;top:50%;transform:translateY(-50%);
+      width:62px;height:62px;border-radius:50%;display:none;align-items:center;justify-content:center;
+      background:#25d366;box-shadow:0 8px 18px rgba(0,0,0,.28);z-index:1200
+    }
+    .wa-float svg{width:34px;height:34px;fill:#fff}
+    .wa-float:active{transform:translateY(-50%) scale(.98)}
+    @media(max-width:900px){ .wa-float{display:flex} }
+
+    /* Ajustes responsivos menores */
     @media(max-width:900px){
-      .video-section{padding:60px 30px;}
-      .video-box iframe{height:220px;}
-      #servicios{padding:60px 20px;}
+      .hero-text h1{font-size:2rem}
+      .hero-text p{font-size:1rem}
+      .servicio img{height:210px}
     }
   </style>
 </head>
 <body>
+
+  <!-- HEADER -->
   <header id="header">
-    <div class="logo">Decorativo Panamá</div>
-    <nav>
-      <a href="#inicio">Inicio</a>
-      <a href="#video">Video</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
+    <div class="header-inner">
+      <div class="logo">Decorativo Panamá</div>
+      <nav aria-label="principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#video">Video</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="header-spacer"></div>
+    </div>
   </header>
 
-  <!-- CARRUSEL -->
-  <section class="hero" id="inicio">
+  <!-- HERO / CARRUSEL -->
+  <section class="hero" id="inicio" aria-label="carrusel principal">
     <div class="slides">
-      <img src="https://images.unsplash.com/photo-1618219944342-824e40a13285?auto=format&fit=crop&w=1600&q=80" alt="Papel tapiz decorativo">
-      <img src="https://images.unsplash.com/photo-1629123390252-7d7b51cbd9ec?auto=format&fit=crop&w=1600&q=80" alt="Persianas y cortinas modernas">
-      <img src="https://images.unsplash.com/photo-1616628188398-2c3e1e18d8c2?auto=format&fit=crop&w=1600&q=80" alt="Techos decorativos y gypsum">
+      <!-- Reemplaza por tus archivos locales en /images -->
+      <img src="images/banner-1.jpg" alt="Papel tapiz decorativo">
+      <img src="images/banner-2.jpg" alt="Persianas y cortinas modernas">
+      <img src="images/banner-3.jpg" alt="Techos y gypsum decorativo">
     </div>
+    <div class="hero-overlay"></div>
     <div class="hero-text">
       <h1>Diseño y elegancia natural para tus espacios</h1>
       <p>Transformamos interiores con armonía, arte y materiales de calidad excepcional.</p>
-      <a href="#servicios" class="btn">Ver Servicios</a>
+      <a class="btn" href="#servicios">Ver Servicios</a>
     </div>
   </section>
 
-  <!-- VIDEO -->
+  <!-- VIDEO + TEXTO (16:9 CORREGIDO) -->
   <section class="video-section" id="video">
-    <div class="video-box">
-      <iframe src="https://www.youtube.com/embed/0ghZEtlF8e0" title="Decorativo Panamá" allowfullscreen></iframe>
-    </div>
-    <div class="video-text">
-      <h2>Calidad excepcional en cada detalle</h2>
-      <p>En <strong>Decorativo Panamá</strong> creemos que la elegancia nace de la armonía entre técnica, arte y naturaleza. Cada instalación refleja nuestro compromiso con la precisión, durabilidad y diseño estético.</p>
-      <a href="https://wa.me/50769257477?text=Hola!%20Deseo%20cotizar%20un%20proyecto%20decorativo" class="btn" target="_blank">💬 Cotizar ahora</a>
+    <div class="container">
+      <div class="video-grid">
+        <div class="video-box">
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/0ghZEtlF8e0"
+              title="Decorativo Panamá"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="video-text">
+          <h2>Calidad excepcional en cada detalle</h2>
+          <p>
+            En <strong>Decorativo Panamá</strong> creemos que la elegancia nace de la armonía entre técnica, arte y naturaleza.
+            Cada instalación refleja nuestro compromiso con la precisión, la durabilidad y el diseño estético para hogares y negocios.
+          </p>
+          <a class="btn" target="_blank"
+             href="https://wa.me/50769257477?text=Hola!%20Deseo%20cotizar%20un%20proyecto%20decorativo">💬 Cotizar ahora</a>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- SERVICIOS -->
   <section id="servicios">
-    <h2>Nuestros Servicios</h2>
-    <div class="servicios">
-      <div class="servicio"><img src="https://images.unsplash.com/photo-1618219944342-824e40a13285?auto=format&fit=crop&w=900&q=80" alt="Papel Tapiz"><h3>Papel Tapiz</h3></div>
-      <div class="servicio"><img src="https://images.unsplash.com/photo-1631892205565-ec8c8fbcf7aa?auto=format&fit=crop&w=900&q=80" alt="Murales Decorativos"><h3>Murales Decorativos</h3></div>
-      <div class="servicio"><img src="https://images.unsplash.com/photo-1588854337236-6889d631faa0?auto=format&fit=crop&w=900&q=80" alt="Gypsum Decorativo"><h3>Gypsum Decorativo</h3></div>
-      <div class="servicio"><img src="https://images.unsplash.com/photo-1616628188398-2c3e1e18d8c2?auto=format&fit=crop&w=900&q=80" alt="Pisos y Techos"><h3>Pisos y Techos</h3></div>
-      <div class="servicio"><img src="https://images.unsplash.com/photo-1629123390252-7d7b51cbd9ec?auto=format&fit=crop&w=900&q=80" alt="Persianas y Cortinas"><h3>Persianas y Cortinas</h3></div>
-      <div class="servicio"><img src="https://images.unsplash.com/photo-1595421514287-85b7b02dd9e5?auto=format&fit=crop&w=900&q=80" alt="Paneles Decorativos"><h3>Paneles Decorativos</h3></div>
+    <div class="container">
+      <h2>Nuestros Servicios</h2>
+      <div class="servicios">
+        <div class="servicio">
+          <img src="images/servicio-papel-tapiz.jpg" alt="Papel Tapiz"><h3>Papel Tapiz</h3>
+        </div>
+        <div class="servicio">
+          <img src="images/servicio-murales.jpg" alt="Murales Decorativos"><h3>Murales Decorativos</h3>
+        </div>
+        <div class="servicio">
+          <img src="images/servicio-persianas.jpg" alt="Persianas y Cortinas"><h3>Persianas y Cortinas</h3>
+        </div>
+        <div class="servicio">
+          <img src="images/servicio-pisos-techos.jpg" alt="Pisos y Techos"><h3>Pisos y Techos</h3>
+        </div>
+        <div class="servicio">
+          <img src="images/servicio-gypsum.jpg" alt="Gypsum Decorativo"><h3>Gypsum Decorativo</h3>
+        </div>
+        <div class="servicio">
+          <img src="images/servicio-paneles.jpg" alt="Paneles Decorativos"><h3>Paneles Decorativos</h3>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer id="contacto">
-    <h3>Decorativo Panamá</h3>
-    <p>📍 Plaza Royal Park, Local 15Ab – A lado de Figura Rostro<br>Av. Ernesto T. Lefevre, Ciudad de Panamá</p>
-    <p>📞 <a href="tel:+50769257477">+507 6925-7477</a> | ✉️ <a href="mailto:info@decorativopanama.com">info@decorativopanama.com</a></p>
-    <div class="footer-divider"></div>
-    <p class="footer-bottom">© 2025 Decorativo Panamá — Diseño, arte y elegancia natural.</p>
+    <div class="container">
+      <h3>Decorativo Panamá</h3>
+      <p>📍 Plaza Royal Park, Local 15Ab – A lado de Figura Rostro<br>Av. Ernesto T. Lefevre, Ciudad de Panamá</p>
+      <p>📞 <a href="tel:+50769257477">+507 6925-7477</a> | ✉️ <a href="mailto:info@decorativopanama.com">info@decorativopanama.com</a></p>
+      <div class="footer-divider"></div>
+      <p class="footer-bottom">© 2025 Decorativo Panamá — Diseño, arte y elegancia natural.</p>
+    </div>
   </footer>
 
-  <!-- BOTÓN FLOTANTE -->
-  <div class="float-buttons">
-    <a href="https://wa.me/50769257477?text=Hola!%20Deseo%20cotizar%20un%20proyecto%20decorativo" target="_blank">💬<br>Cotizar</a>
-  </div>
+  <!-- BOTÓN WHATSAPP SOLO EN MÓVIL (derecha) -->
+  <a class="wa-float" aria-label="WhatsApp Cotizar" target="_blank"
+     href="https://wa.me/50769257477?text=Hola!%20Deseo%20cotizar%20un%20proyecto%20decorativo">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M19.11 17.55c-.28-.14-1.62-.8-1.87-.9s-.44-.14-.62.14c-.18.28-.71.9-.87 1.08-.16.18-.32.21-.59.07-.28-.14-1.14-.42-2.17-1.35-.8-.71-1.34-1.58-1.5-1.86-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.48.14-.16.18-.28.28-.46.09-.18.05-.35-.02-.49-.07-.14-.62-1.49-.85-2.05-.22-.52-.44-.45-.62-.46h-.53c-.18 0-.49.07-.75.35-.26.28-.99.96-.99 2.33 0 1.37 1.02 2.7 1.16 2.89.14.18 2 3.05 4.84 4.28.68.29 1.21.46 1.62.59.68.22 1.31.19 1.81.12.55-.08 1.62-.66 1.85-1.3.23-.64.23-1.19.16-1.3-.07-.11-.25-.18-.53-.32zM16.02 3.2C9.84 3.2 4.84 8.2 4.84 14.38c0 2.48.81 4.77 2.17 6.62L6 28.8l7.98-1.99c1.78.98 3.83 1.54 6.04 1.54 6.18 0 11.18-5 11.18-11.18S22.2 3.2 16.02 3.2zm0 20.17c-1.96 0-3.78-.58-5.29-1.58l-.38-.25-4.73 1.18 1.26-4.6-.25-.39a9.176 9.176 0 0 1-1.43-4.9c0-5.09 4.13-9.22 9.22-9.22s9.22 4.13 9.22 9.22-4.13 9.22-9.22 9.22z"/>
+    </svg>
+  </a>
 
   <script>
-    window.addEventListener("scroll",function(){
-      const header=document.getElementById("header");
-      if(window.scrollY>100){header.classList.add("scrolled");}
-      else{header.classList.remove("scrolled");}
+    // Cambia color de header al hacer scroll
+    window.addEventListener('scroll', () => {
+      const h = document.getElementById('header');
+      if (window.scrollY > 80) h.classList.add('scrolled'); else h.classList.remove('scrolled');
     });
   </script>
 </body>
