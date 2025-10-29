@@ -18,7 +18,7 @@
     /* HEADER */
     header {
       position:fixed;
-      top:0; left:0; width:100%;
+      top:0;left:0;width:100%;
       padding:18px 40px;
       background:rgba(30,50,30,0.7);
       color:white;
@@ -100,7 +100,7 @@
     }
     .btn:hover {background:#5e8453;}
 
-    /* SECCION VIDEO */
+    /* SECCIÓN VIDEO */
     .video-section {
       display:flex;
       flex-wrap:wrap;
@@ -138,16 +138,55 @@
       color:#444;
     }
 
-    /* FOOTER */
+    /* FOOTER NUEVO */
     footer {
-      background:#1e3d2b;
-      color:#dce3d4;
+      background:linear-gradient(160deg, #1e3d2b 0%, #294d37 100%);
+      color:#e8eee8;
       text-align:center;
-      padding:50px 20px;
+      padding:70px 20px;
+      font-size:0.95rem;
+      position:relative;
+      overflow:hidden;
     }
-    footer a {color:#a7ce90;text-decoration:none;}
+    footer::before {
+      content:"";
+      position:absolute;
+      top:0; left:0; right:0;
+      height:4px;
+      background:linear-gradient(90deg,#9bbd7a,#c0dba7,#9bbd7a);
+    }
+    footer h3 {
+      font-family:'Playfair Display', serif;
+      font-size:1.6rem;
+      margin-bottom:15px;
+      color:#cfe8c9;
+    }
+    footer p {
+      margin:10px 0;
+      line-height:1.7;
+    }
+    footer a {
+      color:#c0e0b8;
+      font-weight:500;
+      text-decoration:none;
+    }
+    footer a:hover {
+      color:#ffffff;
+      text-decoration:underline;
+    }
+    .footer-divider {
+      width:80%;
+      height:1px;
+      background:rgba(255,255,255,0.2);
+      margin:25px auto;
+    }
+    .footer-bottom {
+      font-size:0.85rem;
+      color:#cfd4c9;
+      margin-top:20px;
+    }
 
-    /* BOTON FLOTANTE */
+    /* BOTÓN FLOTANTE */
     .float-buttons {
       position:fixed;
       bottom:25px;
@@ -221,4 +260,26 @@
   </section>
 
   <footer id="contacto">
-    <p>📍 Plaza Royal Park, Local 15Ab – A lado de Figura Rostro, Av. Ernesto T. Lefevre</p>
+    <h3>Decorativo Panamá</h3>
+    <p>📍 Plaza Royal Park, Local 15Ab – A lado de Figura Rostro<br>Av. Ernesto T. Lefevre, Ciudad de Panamá</p>
+    <p>📞 <a href="tel:+50769257477">+507 6925-7477</a> | ✉️ <a href="mailto:info@decorativopanama.com">info@decorativopanama.com</a></p>
+    <div class="footer-divider"></div>
+    <p class="footer-bottom">© 2025 Decorativo Panamá — Diseño, arte y elegancia natural.</p>
+  </footer>
+
+  <div class="float-buttons">
+    <a href="https://wa.me/50769257477?text=Hola!%20Deseo%20cotizar%20un%20proyecto%20decorativo" target="_blank">💬<br>Cotizar</a>
+  </div>
+
+  <script>
+    window.addEventListener("scroll", function(){
+      const header = document.getElementById("header");
+      if(window.scrollY > 100){
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+  </script>
+</body>
+</html>
