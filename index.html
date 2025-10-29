@@ -4,223 +4,191 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Decorativo Panamá - Elegancia Natural</title>
-  <meta name="description" content="Decorativo Panamá: arte, textura y naturaleza en diseño arquitectónico. Papeles, murales, pisos, techos y gypsum decorativo con elegancia y armonía.">
+  <meta name="description" content="Decorativo Panamá: diseño artístico y natural en interiores. Papeles, murales, persianas, techos y gypsum decorativo.">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;500;700&display=swap');
-    * {margin:0;padding:0;box-sizing:border-box;}
-    body {
-      font-family:'Montserrat', sans-serif;
-      color:#2a2a2a;
-      background:#f5f7f4;
-      overflow-x:hidden;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@300;500;700&display=swap');
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Montserrat',sans-serif;background:#f5f7f4;color:#2a2a2a;overflow-x:hidden;}
 
     /* HEADER */
-    header {
-      position:fixed;
-      top:0;left:0;width:100%;
-      padding:18px 40px;
+    header{
+      position:fixed;top:0;left:0;width:100%;
       background:rgba(30,50,30,0.7);
+      backdrop-filter:blur(8px);
       color:white;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      z-index:1000;
-      backdrop-filter:blur(10px);
-      transition:all 0.4s ease;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:15px 40px;z-index:1000;transition:all .3s ease;
     }
-    header.scrolled {
-      background:white;
-      color:#1e3d2b;
-      box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    .logo{
+      font-family:'Playfair Display',serif;
+      font-size:1.7rem;font-weight:600;
     }
-    .logo {
-      font-family:'Playfair Display', serif;
-      font-size:1.7rem;
-      color:white;
-      font-weight:700;
-      transition:color 0.4s;
-    }
-    header.scrolled .logo {color:#1e3d2b;}
-    nav {
-      display:flex;
-      justify-content:center;
-      flex:1;
-      gap:30px;
-    }
-    nav a {
-      text-decoration:none;
-      color:inherit;
-      font-weight:500;
-      transition:color 0.3s;
-    }
-    nav a:hover {color:#9bbd7a;}
+    nav{display:flex;gap:30px;}
+    nav a{text-decoration:none;color:inherit;font-weight:500;}
+    nav a:hover{color:#a8c686;}
+    header.scrolled{background:white;color:#1e3d2b;box-shadow:0 2px 10px rgba(0,0,0,0.1);}
+    header.scrolled .logo{color:#1e3d2b;}
 
-    /* HERO */
-    .hero {
-      height:90vh;
-      background:url('https://images.unsplash.com/photo-1622396480875-82e0e5a52b16?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    @media(max-width:900px){
+      nav{display:none;} /* ocultar menú en móvil */
+      header{justify-content:center;}
+    }
+
+    /* HERO / CARRUSEL */
+    .hero{
+      margin-top:70px;
+      position:relative;
+      width:100%;
+      height:56vw; /* proporción tipo video */
+      max-height:550px;
+      overflow:hidden;
+    }
+    .slides{
       display:flex;
-      align-items:center;
-      justify-content:center;
+      width:300%;
+      animation:slide 18s infinite;
+    }
+    .slides img{
+      width:100%;
+      height:auto;
+      flex:1;
+      object-fit:cover;
+    }
+    @keyframes slide{
+      0%{transform:translateX(0);}
+      33%{transform:translateX(-100%);}
+      66%{transform:translateX(-200%);}
+      100%{transform:translateX(0);}
+    }
+    .hero-text{
+      position:absolute;
+      top:50%;left:50%;
+      transform:translate(-50%,-50%);
       text-align:center;
       color:white;
-      position:relative;
-    }
-    .hero::after {
-      content:"";
-      position:absolute;
-      inset:0;
-      background:rgba(20,40,25,0.55);
-    }
-    .hero-content {
-      position:relative;
+      text-shadow:0 2px 8px rgba(0,0,0,0.7);
       z-index:2;
-      max-width:850px;
-      padding:0 20px;
     }
-    .hero h1 {
-      font-family:'Playfair Display', serif;
-      font-size:3rem;
-      margin-bottom:15px;
+    .hero-text h1{
+      font-family:'Playfair Display',serif;
+      font-size:2.5rem;
+      margin-bottom:10px;
     }
-    .hero p {
-      font-size:1.2rem;
-      margin-bottom:25px;
-      line-height:1.6;
-    }
-    .btn {
+    .hero-text p{font-size:1.1rem;margin-bottom:20px;}
+    .btn{
       background:#7ba46b;
       color:white;
-      padding:12px 30px;
+      padding:10px 25px;
       border-radius:25px;
       text-decoration:none;
       font-weight:600;
-      transition:background 0.3s;
     }
-    .btn:hover {background:#5e8453;}
+    .btn:hover{background:#5e8453;}
 
-    /* SECCIÓN VIDEO */
-    .video-section {
+    /* VIDEO SECCIÓN */
+    .video-section{
       display:flex;
       flex-wrap:wrap;
       align-items:center;
       justify-content:center;
-      padding:100px 100px;
       gap:50px;
+      padding:80px 100px;
       background:white;
     }
-    .video-box {
+    .video-box{
       flex:1 1 380px;
       border-radius:15px;
       overflow:hidden;
       box-shadow:0 4px 15px rgba(0,0,0,0.1);
     }
-    .video-box iframe {
-      width:100%;
-      height:250px;
-      border:none;
-    }
-    .video-text {
+    .video-box iframe{width:100%;height:250px;border:none;}
+    .video-text{
       flex:1 1 520px;
       color:#2a2a2a;
     }
-    .video-text h2 {
-      font-family:'Playfair Display', serif;
+    .video-text h2{
+      font-family:'Playfair Display',serif;
       font-size:2rem;
       color:#1e3d2b;
       margin-bottom:15px;
     }
-    .video-text p {
-      font-size:1rem;
-      line-height:1.8;
-      margin-bottom:25px;
-      color:#444;
+    .video-text p{font-size:1rem;line-height:1.8;margin-bottom:25px;color:#444;}
+
+    /* SERVICIOS */
+    #servicios{
+      padding:80px 60px;
+      background:#f9faf7;
+      text-align:center;
+    }
+    #servicios h2{
+      font-family:'Playfair Display',serif;
+      font-size:2rem;
+      color:#1e3d2b;
+      margin-bottom:20px;
+    }
+    .servicios{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+      margin-top:40px;
+    }
+    .servicio{
+      position:relative;
+      border-radius:10px;
+      overflow:hidden;
+      transition:transform .3s;
+    }
+    .servicio:hover{transform:translateY(-5px);}
+    .servicio img{
+      width:100%;height:250px;object-fit:cover;filter:brightness(0.85);
+    }
+    .servicio h3{
+      position:absolute;
+      bottom:15px;left:20px;
+      color:white;font-family:'Playfair Display',serif;font-size:1.2rem;
+      text-shadow:0 2px 5px rgba(0,0,0,0.6);
     }
 
-    /* FOOTER NUEVO */
-    footer {
-      background:linear-gradient(160deg, #1e3d2b 0%, #294d37 100%);
+    /* FOOTER */
+    footer{
+      background:linear-gradient(160deg,#1e3d2b,#2c533d);
       color:#e8eee8;
       text-align:center;
       padding:70px 20px;
-      font-size:0.95rem;
-      position:relative;
-      overflow:hidden;
     }
-    footer::before {
-      content:"";
-      position:absolute;
-      top:0; left:0; right:0;
-      height:4px;
-      background:linear-gradient(90deg,#9bbd7a,#c0dba7,#9bbd7a);
-    }
-    footer h3 {
-      font-family:'Playfair Display', serif;
+    footer h3{
+      font-family:'Playfair Display',serif;
       font-size:1.6rem;
       margin-bottom:15px;
       color:#cfe8c9;
     }
-    footer p {
-      margin:10px 0;
-      line-height:1.7;
-    }
-    footer a {
-      color:#c0e0b8;
-      font-weight:500;
-      text-decoration:none;
-    }
-    footer a:hover {
-      color:#ffffff;
-      text-decoration:underline;
-    }
-    .footer-divider {
-      width:80%;
-      height:1px;
-      background:rgba(255,255,255,0.2);
+    footer p{margin:10px 0;line-height:1.7;}
+    footer a{color:#c0e0b8;text-decoration:none;}
+    footer a:hover{color:#fff;}
+    .footer-divider{
+      width:80%;height:1px;background:rgba(255,255,255,0.2);
       margin:25px auto;
     }
-    .footer-bottom {
-      font-size:0.85rem;
-      color:#cfd4c9;
-      margin-top:20px;
-    }
+    .footer-bottom{font-size:0.85rem;color:#cfd4c9;margin-top:20px;}
 
     /* BOTÓN FLOTANTE */
-    .float-buttons {
-      position:fixed;
-      bottom:25px;
-      right:25px;
-      z-index:999;
+    .float-buttons{
+      position:fixed;bottom:25px;right:25px;z-index:999;
     }
-    .float-buttons a {
-      width:70px;
-      height:70px;
-      border-radius:50%;
-      background:#7ba46b;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:white;
-      font-size:15px;
-      font-weight:600;
-      text-align:center;
-      text-decoration:none;
+    .float-buttons a{
+      width:70px;height:70px;border-radius:50%;
+      background:#7ba46b;color:white;
+      display:flex;align-items:center;justify-content:center;
+      font-size:15px;font-weight:600;text-align:center;text-decoration:none;
       box-shadow:0 4px 10px rgba(0,0,0,0.3);
-      transition:transform 0.3s, background 0.3s;
+      transition:transform .3s,background .3s;
     }
-    .float-buttons a:hover {
-      background:#5e8453;
-      transform:scale(1.05);
-    }
+    .float-buttons a:hover{background:#5e8453;transform:scale(1.05);}
 
     @media(max-width:900px){
-      header {padding:15px 25px;}
-      nav {gap:20px;}
-      .hero h1 {font-size:2.3rem;}
-      .hero p {font-size:1rem;}
-      .video-section {padding:60px 30px;}
-      .video-box iframe {height:220px;}
+      .video-section{padding:60px 30px;}
+      .video-box iframe{height:220px;}
+      #servicios{padding:60px 20px;}
     }
   </style>
 </head>
@@ -235,30 +203,45 @@
     </nav>
   </header>
 
+  <!-- CARRUSEL -->
   <section class="hero" id="inicio">
-    <div class="hero-content">
-      <h1>Elegancia natural que transforma espacios</h1>
-      <p>Inspirados en la belleza del entorno, transformamos interiores con equilibrio y arte.  
-      Materiales nobles, texturas únicas y colores que respiran naturaleza.</p>
-      <a href="#video" class="btn">Explorar Inspiración</a>
+    <div class="slides">
+      <img src="https://images.unsplash.com/photo-1622396480875-82e0e5a52b16?auto=format&fit=crop&w=1600&q=80" alt="Decoración mural">
+      <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1600&q=80" alt="Persianas elegantes">
+      <img src="https://images.unsplash.com/photo-1616628188398-2c3e1e18d8c2?auto=format&fit=crop&w=1600&q=80" alt="Techos decorativos">
+    </div>
+    <div class="hero-text">
+      <h1>Diseño y elegancia natural para tus espacios</h1>
+      <p>Transformamos interiores con armonía, arte y materiales de calidad excepcional.</p>
+      <a href="#servicios" class="btn">Ver Servicios</a>
     </div>
   </section>
 
+  <!-- VIDEO -->
   <section class="video-section" id="video">
     <div class="video-box">
       <iframe src="https://www.youtube.com/embed/0ghZEtlF8e0" title="Decorativo Panamá" allowfullscreen></iframe>
     </div>
     <div class="video-text">
       <h2>Calidad excepcional en cada detalle</h2>
-      <p>
-        En <strong>Decorativo Panamá</strong> creemos que la elegancia nace de la armonía entre técnica, arte y naturaleza.  
-        Cada instalación refleja nuestro compromiso con la precisión, la durabilidad y el diseño estético.  
-        Ya sea un proyecto residencial o corporativo, nuestro objetivo es superar expectativas y brindar una experiencia visual única.
-      </p>
+      <p>En <strong>Decorativo Panamá</strong> creemos que la elegancia nace de la armonía entre técnica, arte y naturaleza. Cada instalación refleja nuestro compromiso con la precisión, durabilidad y diseño estético.</p>
       <a href="https://wa.me/50769257477?text=Hola!%20Deseo%20cotizar%20un%20proyecto%20decorativo" class="btn" target="_blank">💬 Cotizar ahora</a>
     </div>
   </section>
 
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <h2>Nuestros Servicios</h2>
+    <div class="servicios">
+      <div class="servicio"><img src="https://images.unsplash.com/photo-1618219944342-824e40a13285?auto=format&fit=crop&w=900&q=80" alt="Papel Tapiz"><h3>Papel Tapiz</h3></div>
+      <div class="servicio"><img src="https://images.unsplash.com/photo-1631892205565-ec8c8fbcf7aa?auto=format&fit=crop&w=900&q=80" alt="Murales Decorativos"><h3>Murales Decorativos</h3></div>
+      <div class="servicio"><img src="https://images.unsplash.com/photo-1588854337236-6889d631faa0?auto=format&fit=crop&w=900&q=80" alt="Gypsum Decorativo"><h3>Gypsum Decorativo</h3></div>
+      <div class="servicio"><img src="https://images.unsplash.com/photo-1616628188398-2c3e1e18d8c2?auto=format&fit=crop&w=900&q=80" alt="Pisos y Techos"><h3>Pisos y Techos</h3></div>
+      <div class="servicio"><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80" alt="Persianas y Cortinas"><h3>Persianas y Cortinas</h3></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer id="contacto">
     <h3>Decorativo Panamá</h3>
     <p>📍 Plaza Royal Park, Local 15Ab – A lado de Figura Rostro<br>Av. Ernesto T. Lefevre, Ciudad de Panamá</p>
@@ -267,18 +250,16 @@
     <p class="footer-bottom">© 2025 Decorativo Panamá — Diseño, arte y elegancia natural.</p>
   </footer>
 
+  <!-- BOTÓN FLOTANTE -->
   <div class="float-buttons">
     <a href="https://wa.me/50769257477?text=Hola!%20Deseo%20cotizar%20un%20proyecto%20decorativo" target="_blank">💬<br>Cotizar</a>
   </div>
 
   <script>
-    window.addEventListener("scroll", function(){
-      const header = document.getElementById("header");
-      if(window.scrollY > 100){
-        header.classList.add("scrolled");
-      } else {
-        header.classList.remove("scrolled");
-      }
+    window.addEventListener("scroll",function(){
+      const header=document.getElementById("header");
+      if(window.scrollY>100){header.classList.add("scrolled");}
+      else{header.classList.remove("scrolled");}
     });
   </script>
 </body>
