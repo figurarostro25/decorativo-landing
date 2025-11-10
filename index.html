@@ -12,18 +12,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
 
-  <!-- OG/Twitter (usa un solo archivo en la raíz) -->
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="es_PA">
-  <meta property="og:title" content="Decorativo Panamá | Elegancia Natural para tus espacios">
-  <meta property="og:description" content="Papeles tapiz, murales, persianas, gypsum, techos y paneles decorativos.">
-  <meta property="og:url" content="https://decorativo-landing-2vav.vercel.app/">
-  <meta property="og:image" content="./og-decorativo.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Decorativo Panamá | Elegancia Natural">
-  <meta name="twitter:description" content="Transformamos interiores con arte, técnica y materiales de alta calidad.">
-  <meta name="twitter:image" content="./og-decorativo.jpg">
-
   <link rel="icon" href="./favicon.png" type="image/png">
 
   <style>
@@ -39,7 +27,7 @@
     /* ===== HEADER ===== */
     header{
       position:fixed;inset:0 0 auto 0;height:64px;
-      background:rgba(30,50,30,.72);backdrop-filter:blur(8px);
+      background:rgba(30,50,30,.78);backdrop-filter:blur(8px);
       z-index:1000;color:#fff
     }
     .header-inner{
@@ -65,31 +53,57 @@
       .header-inner{justify-content:center}
     }
 
-    /* ===== HERO / CARRUSEL ===== */
+    /* ===== HERO / CARRUSEL (con flechas + autoplay) ===== */
     .hero{margin-top:64px;position:relative;width:100%;height:56vw;max-height:540px;overflow:hidden}
-    .slides{display:flex;width:300%;height:100%;animation:slide 18s infinite}
-    .slides img{width:100%;height:100%;object-fit:cover;flex:1;display:block}
-    @keyframes slide{
-      0%{transform:translateX(0)}
-      33%{transform:translateX(-100%)}
-      66%{transform:translateX(-200%)}
-      100%{transform:translateX(0)}
+    .slider{
+      position:relative;width:100%;height:100%;overflow:hidden
     }
-    .hero-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.45),rgba(0,0,0,.25))}
+    .track{
+      display:flex;height:100%;transition:transform .6s ease
+    }
+    .slide{
+      position:relative;flex:0 0 100%;height:100%
+    }
+    .slide img{
+      width:100%;height:100%;object-fit:cover;display:block;
+      /* aclarar y más color */
+      filter:brightness(1.06) contrast(1.06) saturate(1.15);
+    }
+    .hero-overlay{position:absolute;inset:0;pointer-events:none;
+      /* overlay más claro que antes */
+      background:linear-gradient(0deg,rgba(0,0,0,.28),rgba(0,0,0,.18))
+    }
     .hero-text{
       position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
-      text-align:center;color:#fff;padding:0 16px;text-shadow:0 2px 8px rgba(0,0,0,.6)
+      text-align:center;color:#fff;padding:0 16px;text-shadow:0 2px 8px rgba(0,0,0,.55)
     }
     .hero-text h1{font-family:'Playfair Display',serif;font-size:2.6rem;margin-bottom:10px}
     .hero-text p{font-size:1.1rem;margin-bottom:18px}
-    .btn{background:var(--acento);color:#fff;padding:10px 24px;border-radius:24px;text-decoration:none;font-weight:600}
+    /* Botón más rectangular */
+    .btn{background:var(--acento);color:#fff;padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:700;letter-spacing:.2px;box-shadow:0 6px 16px rgba(0,0,0,.14)}
     .btn:hover{background:#5e8453}
+
+    /* Flechas */
+    .arrow{
+      position:absolute;top:50%;transform:translateY(-50%);
+      width:44px;height:44px;border-radius:8px;background:rgba(0,0,0,.35);
+      display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5
+    }
+    .arrow:hover{background:rgba(0,0,0,.5)}
+    .arrow svg{width:22px;height:22px;fill:#fff}
+    .arrow.left{left:12px}
+    .arrow.right{right:12px}
+
+    /* Puntos */
+    .dots{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:8px;z-index:6}
+    .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer}
+    .dot.active{background:#fff}
 
     @media(max-width:900px){
       .hero{height:52vw;max-height:320px}
-      .slides img{object-fit:contain;background:#e8efe6}
       .hero-text h1{font-size:1.9rem}
       .hero-text p{font-size:.98rem}
+      .arrow{width:38px;height:38px}
     }
 
     /* ===== CONTENEDOR ===== */
@@ -120,11 +134,23 @@
       box-shadow:0 3px 14px rgba(0,0,0,.07);transition:transform .25s ease
     }
     .card:hover{transform:translateY(-4px)}
-    .card img{width:100%;height:220px;object-fit:cover;display:block}
+    .card img{width:100%;height:260px;object-fit:cover;display:block}
     .card h3{
       position:absolute;left:14px;bottom:14px;margin:0;color:#fff;
       font-family:'Playfair Display',serif;font-size:1.15rem;text-shadow:0 2px 6px rgba(0,0,0,.55)
     }
+
+    /* ===== GALERÍA DINÁMICA ===== */
+    #galeria{background:#fff;padding:72px 0}
+    #galeria h2{font-family:'Playfair Display',serif;color:var(--verde);text-align:center;font-size:2rem;margin-bottom:24px}
+    .grid-gal{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1200px;margin:0 auto;padding:0 24px
+    }
+    .grid-gal img{
+      width:100%;height:220px;object-fit:cover;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.08)
+    }
+    @media(max-width:1000px){ .grid-gal{grid-template-columns:repeat(3,1fr)} }
+    @media(max-width:680px){ .grid-gal{grid-template-columns:repeat(2,1fr)} }
 
     /* ===== FOOTER ===== */
     footer{background:linear-gradient(160deg,var(--verde),var(--verde-2));color:#e8eee8;text-align:center;padding:64px 0}
@@ -138,13 +164,13 @@
     /* ===== WHATSAPP flotante ===== */
     .wa-float{
       position:fixed;right:18px;bottom:18px;
-      width:68px;height:68px;border-radius:50%;
+      width:68px;height:68px;border-radius:12px; /* rectangular redondeo leve */
       display:flex;align-items:center;justify-content:center;
       background:#25d366;box-shadow:0 10px 22px rgba(0,0,0,.25);z-index:1200;
       color:#fff;text-decoration:none;font-weight:700
     }
-    .wa-float svg{width:34px;height:34px;fill:#fff;margin-right:6px}
-    .wa-float span{font-size:.9rem}
+    .wa-float svg{width:28px;height:28px;fill:#fff;margin-right:8px}
+    .wa-float span{font-size:.95rem}
   </style>
 </head>
 <body>
@@ -157,6 +183,7 @@
         <a href="#inicio">Inicio</a>
         <a href="#video">Video</a>
         <a href="#servicios">Servicios</a>
+        <a href="#galeria">Galería</a>
         <a href="#contacto">Contacto</a>
       </nav>
     </div>
@@ -164,16 +191,32 @@
 
   <!-- HERO / CARRUSEL -->
   <section class="hero" id="inicio" aria-label="carrusel principal">
-    <div class="slides">
-      <img src="./hero-papel-tapiz.jpg?v=3" alt="Papel tapiz decorativo en sala moderna" loading="eager" fetchpriority="high">
-      <img src="./hero-persianas.jpg?v=3"   alt="Persianas y cortinas modernas a medida" loading="lazy">
-      <img src="./hero-gypsum-techos.jpg?v=3" alt="Cielo raso gypsum y detalles decorativos en techo" loading="lazy">
-    </div>
-    <div class="hero-overlay" aria-hidden="true"></div>
-    <div class="hero-text">
-      <h1>Diseño y elegancia natural para tus espacios</h1>
-      <p>Transformamos interiores con armonía, arte y materiales de calidad excepcional.</p>
-      <a class="btn" href="#servicios">Ver Servicios</a>
+    <div class="slider" id="slider">
+      <div class="track" id="track">
+        <!-- Usa 3 o 4 slides; si subes el 4.º, descomenta la línea correspondiente -->
+        <div class="slide"><img src="./hero-papel-tapiz.jpg?v=4" alt="Papel tapiz decorativo en sala moderna"></div>
+        <div class="slide"><img src="./hero-persianas.jpg?v=4"   alt="Persianas y cortinas modernas a medida"></div>
+        <div class="slide"><img src="./hero-gypsum-techos.jpg?v=4" alt="Cielo raso gypsum y detalles decorativos en techo"></div>
+        <!-- <div class="slide"><img src="./hero-paneles.jpg?v=4" alt="Paneles decorativos modernos"></div> -->
+      </div>
+
+      <!-- Flechas -->
+      <button class="arrow left" id="prev" aria-label="Anterior">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+      </button>
+      <button class="arrow right" id="next" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+      </button>
+
+      <!-- Puntos -->
+      <div class="dots" id="dots"></div>
+
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-text">
+        <h1>Diseño y elegancia natural para tus espacios</h1>
+        <p>Transformamos interiores con armonía, arte y materiales de calidad excepcional.</p>
+        <a class="btn" href="#servicios">Ver Servicios</a>
+      </div>
     </div>
   </section>
 
@@ -197,7 +240,7 @@
             Cada instalación refleja nuestro compromiso con la precisión, la durabilidad y el diseño estético para hogares y negocios.
           </p>
           <a class="btn" target="_blank"
-             href="https://wa.me/50769257477?text=Hola!%20Deseo%20cotizar%20un%20proyecto%20decorativo">💬 Cotizar ahora</a>
+             href="https://wa.me/50769257477?text=Hola!%20Deseo%20cotizar%20un%20proyecto%20decorativo">Cotizar ahora</a>
         </div>
       </div>
     </div>
@@ -209,31 +252,37 @@
       <h2>Nuestros Servicios</h2>
       <div class="servicios">
         <article class="card">
-          <img src="./servicio-papel-tapiz.jpg?v=3" alt="Instalación de papel tapiz en paredes" loading="lazy">
+          <img src="./servicio-papel-tapiz.jpg?v=4" alt="Instalación de papel tapiz en paredes" loading="lazy">
           <h3>Papel Tapiz</h3>
         </article>
         <article class="card">
-          <img src="./servicio-murales.jpg?v=3" alt="Murales decorativos personalizados" loading="lazy">
+          <img src="./servicio-murales.jpg?v=4" alt="Murales decorativos personalizados" loading="lazy">
           <h3>Murales Decorativos</h3>
         </article>
         <article class="card">
-          <img src="./servicio-persianas.jpg?v=3" alt="Persianas y cortinas modernas" loading="lazy">
+          <img src="./servicio-persianas.jpg?v=4" alt="Persianas y cortinas modernas" loading="lazy">
           <h3>Persianas y Cortinas</h3>
         </article>
         <article class="card">
-          <img src="./servicio-pisos-techos.jpg?v=3" alt="Acabados en pisos y techos decorativos" loading="lazy">
+          <img src="./servicio-pisos-techos.jpg?v=4" alt="Acabados en pisos y techos decorativos" loading="lazy">
           <h3>Pisos y Techos</h3>
         </article>
         <article class="card">
-          <img src="./servicio-gypsum.jpg?v=3" alt="Diseños en gypsum para interiores" loading="lazy">
+          <img src="./servicio-gypsum.jpg?v=4" alt="Diseños en gypsum para interiores" loading="lazy">
           <h3>Gypsum Decorativo</h3>
         </article>
         <article class="card">
-          <img src="./servicio-paneles-decorativos.jpg?v=3" alt="Paneles decorativos para paredes" loading="lazy">
+          <img src="./servicio-paneles-decorativos.jpg?v=4" alt="Paneles decorativos para paredes" loading="lazy">
           <h3>Paneles Decorativos</h3>
         </article>
       </div>
     </div>
+  </section>
+
+  <!-- GALERÍA DINÁMICA (carga solo las que existan) -->
+  <section id="galeria">
+    <h2>Galería de proyectos</h2>
+    <div class="grid-gal" id="gridGal"></div>
   </section>
 
   <!-- FOOTER -->
@@ -262,6 +311,68 @@
     window.addEventListener('scroll', () => {
       const h = document.getElementById('header');
       if (window.scrollY > 80) h.classList.add('scrolled'); else h.classList.remove('scrolled');
+    });
+
+    /* ===== Carrusel con autoplay + flechas + puntos ===== */
+    const track = document.getElementById('track');
+    const slides = Array.from(track.children);
+    const dotsBox = document.getElementById('dots');
+    let idx = 0;
+    let auto;
+
+    // Dimensionar track según # de slides (evita "slide fantasma")
+    function sizeTrack(){
+      track.style.width = (slides.length * 100) + '%';
+      slides.forEach(s => s.style.width = (100 / slides.length) + '%');
+    }
+    sizeTrack();
+
+    // Crear puntos
+    slides.forEach((_,i)=>{
+      const d = document.createElement('div');
+      d.className = 'dot' + (i===0 ? ' active':'');
+      d.dataset.i = i;
+      d.addEventListener('click', ()=>goTo(i));
+      dotsBox.appendChild(d);
+    });
+
+    function updateDots(){
+      [...dotsBox.children].forEach((d,i)=>d.classList.toggle('active', i===idx));
+    }
+    function goTo(i){
+      idx = (i + slides.length) % slides.length;
+      track.style.transform = `translateX(-${idx* (100/slides.length)}%)`;
+      updateDots();
+      resetAuto();
+    }
+    function next(){ goTo(idx+1); }
+    function prev(){ goTo(idx-1); }
+
+    document.getElementById('next').addEventListener('click', next);
+    document.getElementById('prev').addEventListener('click', prev);
+
+    function resetAuto(){
+      clearInterval(auto);
+      auto = setInterval(next, 5000); // autoplay cada 5s
+    }
+    resetAuto();
+
+    /* ===== Galería dinámica: imgal01.jpg ... imgal20.jpg (solo muestra existentes) ===== */
+    const grid = document.getElementById('gridGal');
+    const maxImgs = 20; // puedes subir hasta imgal20.jpg
+    const names = [];
+    for(let i=1;i<=maxImgs;i++){
+      const n = String(i).padStart(2,'0');
+      names.push(`./imgal${n}.jpg?v=1`);
+    }
+
+    names.forEach(src=>{
+      const img = new Image();
+      img.src = src;
+      img.loading = 'lazy';
+      img.alt = 'Proyecto Decorativo Panamá';
+      img.onload = ()=> grid.appendChild(img); // si carga, se muestra
+      // si falla (404), no se agrega -> no hay cuadro vacío
     });
   </script>
 </body>
