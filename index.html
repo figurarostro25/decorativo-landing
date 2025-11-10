@@ -60,8 +60,8 @@
     .slide{flex:0 0 100%;height:100%;position:relative}
     .slide img{
       width:100%;height:100%;
-      object-fit:contain;           /* <- sin recorte (no zoom) */
-      background:#e8efe6;           /* “letterbox” agradable */
+      object-fit:contain;           /* sin recorte (no zoom) */
+      background:#e8efe6;
       display:block;
       filter:brightness(1.06) contrast(1.06) saturate(1.12);
     }
@@ -80,8 +80,8 @@
       display:inline-flex;align-items:center;gap:8px
     }
     .btn:hover{background:#5e8453}
-    .btn .txt{display:inline}  /* desktop */
-    .btn .icon{display:none}   /* mobile */
+    .btn .txt{display:inline}
+    .btn .icon{display:none}
     @media(max-width:900px){
       .hero{height:52vw;max-height:320px}
       .hero-text h1{font-size:1.9rem}
@@ -193,11 +193,11 @@
   <section class="hero" id="inicio" aria-label="carrusel principal">
     <div class="slider" id="slider">
       <div class="track" id="track">
-        <!-- Usa 3 o 4 slides; si subes el 4.º, descomenta la línea -->
-        <div class="slide"><img src="./hero-papel-tapiz.jpg?v=5" alt="Papel tapiz decorativo en sala moderna"></div>
-        <div class="slide"><img src="./hero-persianas.jpg?v=5"   alt="Persianas y cortinas modernas a medida"></div>
-        <div class="slide"><img src="./hero-gypsum-techos.jpg?v=5" alt="Cielo raso gypsum y detalles decorativos en techo"></div>
-        <!-- <div class="slide"><img src="./hero-paneles.jpg?v=5" alt="Paneles decorativos modernos"></div> -->
+        <!-- Usa 3 o 4 slides; si agregas el 4.º, quita el comentario -->
+        <div class="slide"><img src="./hero-papel-tapiz.jpg?v=6" alt="Papel tapiz decorativo en sala moderna"></div>
+        <div class="slide"><img src="./hero-persianas.jpg?v=6"   alt="Persianas y cortinas modernas a medida"></div>
+        <div class="slide"><img src="./hero-gypsum-techos.jpg?v=6" alt="Cielo raso gypsum y detalles decorativos en techo"></div>
+        <!-- <div class="slide"><img src="./hero-paneles.jpg?v=6" alt="Paneles decorativos modernos"></div> -->
       </div>
 
       <!-- Flechas -->
@@ -249,33 +249,33 @@
     </div>
   </section>
 
-  <!-- SERVICIOS (6 tarjetas) -->
+  <!-- SERVICIOS -->
   <section id="servicios">
     <div class="container">
       <h2>Nuestros Servicios</h2>
       <div class="servicios">
         <article class="card">
-          <img src="./servicio-papel-tapiz.jpg?v=5" alt="Instalación de papel tapiz en paredes" loading="lazy">
+          <img src="./servicio-papel-tapiz.jpg?v=6" alt="Instalación de papel tapiz en paredes" loading="lazy">
           <h3>Papel Tapiz</h3>
         </article>
         <article class="card">
-          <img src="./servicio-murales.jpg?v=5" alt="Murales decorativos personalizados" loading="lazy">
+          <img src="./servicio-murales.jpg?v=6" alt="Murales decorativos personalizados" loading="lazy">
           <h3>Murales Decorativos</h3>
         </article>
         <article class="card">
-          <img src="./servicio-persianas.jpg?v=5" alt="Persianas y cortinas modernas" loading="lazy">
+          <img src="./servicio-persianas.jpg?v=6" alt="Persianas y cortinas modernas" loading="lazy">
           <h3>Persianas y Cortinas</h3>
         </article>
         <article class="card">
-          <img src="./servicio-pisos-techos.jpg?v=5" alt="Acabados en pisos y techos decorativos" loading="lazy">
+          <img src="./servicio-pisos-techos.jpg?v=6" alt="Acabados en pisos y techos decorativos" loading="lazy">
           <h3>Pisos y Techos</h3>
         </article>
         <article class="card">
-          <img src="./servicio-gypsum.jpg?v=5" alt="Diseños en gypsum para interiores" loading="lazy">
+          <img src="./servicio-gypsum.jpg?v=6" alt="Diseños en gypsum para interiores" loading="lazy">
           <h3>Gypsum Decorativo</h3>
         </article>
         <article class="card">
-          <img src="./servicio-paneles-decorativos.jpg?v=5" alt="Paneles decorativos para paredes" loading="lazy">
+          <img src="./servicio-paneles-decorativos.jpg?v=6" alt="Paneles decorativos para paredes" loading="lazy">
           <h3>Paneles Decorativos</h3>
         </article>
       </div>
@@ -316,44 +316,78 @@
       if (window.scrollY > 80) h.classList.add('scrolled'); else h.classList.remove('scrolled');
     });
 
-    /* ===== Slider sencillo: flechas + puntos + autoplay ===== */
+    /* ===== Slider robusto: quita imágenes rotas, recalcula y autoplay ===== */
     const track = document.getElementById('track');
-    const slides = Array.from(track.children);
     const dotsBox = document.getElementById('dots');
+    let slides = Array.from(track.children);
     let idx = 0, auto;
 
-    // Asegurar ancho correcto (evita "slide en partes")
+    // Elimina slides con imagen rota (404) para evitar "desapariciones"
+    function sanitizeSlides(callback){
+      let pending = slides.length;
+      slides.forEach(sl => {
+        const img = sl.querySelector('img');
+        if (img.complete) {
+          if (!img.naturalWidth) sl.remove();
+          done();
+        } else {
+          img.onload = done;
+          img.onerror = () => { sl.remove(); done(); };
+        }
+      });
+      function done(){
+        pending--;
+        if(pending<=0){
+          slides = Array.from(track.children);
+          callback && callback();
+        }
+      }
+    }
+
     function sizeTrack(){
       track.style.width = (slides.length * 100) + '%';
-      slides.forEach(s => s.style.flex = '0 0 100%'); // cada slide = 100%
+      slides.forEach(s => s.style.flex = '0 0 100%');
+      goTo(0, true);
+      buildDots();
     }
-    sizeTrack();
 
-    // Puntos
-    slides.forEach((_,i)=>{
-      const d = document.createElement('div');
-      d.className = 'dot' + (i===0 ? ' active':'');
-      d.dataset.i = i;
-      d.addEventListener('click', ()=>goTo(i));
-      dotsBox.appendChild(d);
-    });
+    function buildDots(){
+      dotsBox.innerHTML = '';
+      slides.forEach((_,i)=>{
+        const d = document.createElement('div');
+        d.className = 'dot' + (i===idx ? ' active':'');
+        d.dataset.i = i;
+        d.addEventListener('click', ()=>goTo(i));
+        dotsBox.appendChild(d);
+      });
+    }
 
     function updateDots(){
       [...dotsBox.children].forEach((d,i)=>d.classList.toggle('active', i===idx));
     }
-    function goTo(i){
+
+    function goTo(i, instant=false){
+      if (!slides.length) return;
       idx = (i + slides.length) % slides.length;
+      track.style.transitionDuration = instant ? '0ms' : '600ms';
       track.style.transform = `translateX(-${idx*100}%)`;
       updateDots();
       resetAuto();
     }
+
     function next(){ goTo(idx+1); }
     function prev(){ goTo(idx-1); }
+
     document.getElementById('next').addEventListener('click', next);
     document.getElementById('prev').addEventListener('click', prev);
 
-    function resetAuto(){ clearInterval(auto); auto = setInterval(next, 5000); }
-    resetAuto();
+    function resetAuto(){
+      clearInterval(auto);
+      if (slides.length > 1) auto = setInterval(next, 5000);
+    }
+
+    // Init
+    sanitizeSlides(()=>{ sizeTrack(); resetAuto(); });
 
     /* ===== Galería: imgal01.jpg ... imgal20.jpg (solo las que existan) ===== */
     const grid = document.getElementById('gridGal');
@@ -365,8 +399,8 @@
       img.src = src;
       img.loading = 'lazy';
       img.alt = 'Proyecto Decorativo Panamá';
-      img.onload = ()=> grid.appendChild(img); // se muestra solo si existe
-      // onerror => ignorado (no aparece cuadro vacío)
+      img.onload = ()=> grid.appendChild(img);
+      // si falla, no se agrega
     }
   </script>
 </body>
