@@ -17,9 +17,8 @@
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     :root{
-      /* Verde aclarado */
-      --verde:#4e6b5a;      /* antes #1e3d2b */
-      --verde-2:#63876f;    /* degradado más claro */
+      --verde:#4e6b5a;      /* verde aclarado */
+      --verde-2:#63876f;
       --acento:#7ba46b;
       --bg:#f5f7f4;
     }
@@ -55,22 +54,27 @@
       nav{display:none}
     }
 
-    /* ===== HERO / SLIDER (fade, sin recortes) ===== */
+    /* ===== HERO / SLIDER (fade) ===== */
     .hero{margin-top:64px;position:relative;width:100%;height:56vw;max-height:540px;overflow:hidden}
-    .slider{position:relative;width:100%;height:100%;overflow:hidden;background:linear-gradient(#d9d9d9,#9b9b9b)}
+    .slider{position:relative;width:100%;height:100%;background:linear-gradient(#d9d9d9,#9b9b9b)}
+    /* Capa de slides debajo del texto/overlay */
+    .slides-layer{position:absolute;inset:0;z-index:1}
     .slide{position:absolute;inset:0;opacity:0;transition:opacity .6s ease}
     .slide.show{opacity:1}
     .slide img{
-      width:100%;height:100%;object-fit:contain;display:block;background:#e8efe6;
+      width:100%;height:100%;
+      object-fit:contain;             /* desktop sin recorte */
+      display:block;background:#e8efe6;
       filter:brightness(1.06) contrast(1.06) saturate(1.12);
     }
-    .hero-overlay{position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(0,0,0,.20),rgba(0,0,0,.10))}
+    /* Overlay y texto por encima de las imágenes */
+    .hero-overlay{position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(0,0,0,.18),rgba(0,0,0,.10));z-index:2}
     .hero-text{
       position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
-      text-align:center;color:#fff;padding:0 16px;text-shadow:0 2px 8px rgba(0,0,0,.45)
+      text-align:center;color:#fff;padding:0 16px;text-shadow:0 2px 8px rgba(0,0,0,.45);z-index:3
     }
-    .hero-text h1{font-family:'Playfair Display',serif;font-size:2.6rem;margin-bottom:10px}
-    .hero-text p{font-size:1.05rem;margin-bottom:18px}
+    .hero-text h1{font-family:'Playfair Display',serif;font-size:2.4rem;line-height:1.15;margin-bottom:10px}
+    .hero-text p{font-size:1.02rem;margin-bottom:16px}
 
     /* Botón banner: desktop “Cotizar”, móvil “$?” */
     .btn{
@@ -80,21 +84,28 @@
     }
     .btn:hover{background:#5e8453}
     .btn .txt{display:inline}.btn .icon{display:none}
-    @media(max-width:900px){
-      .hero{height:52vw;max-height:320px}
-      .hero-text h1{font-size:1.9rem}
-      .hero-text p{font-size:.98rem}
-      .btn .txt{display:none}.btn .icon{display:inline}
-    }
 
-    /* Flechas + puntos */
-    .arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:8px;background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5}
+    /* Controles por encima de todo */
+    .arrow{
+      position:absolute;top:50%;transform:translateY(-50%);
+      width:44px;height:44px;border-radius:8px;background:rgba(0,0,0,.35);
+      display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:4
+    }
     .arrow:hover{background:rgba(0,0,0,.5)}
     .arrow svg{width:22px;height:22px;fill:#fff}
     .arrow.left{left:12px}.arrow.right{right:12px}
-    .dots{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:8px;z-index:6}
+    .dots{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:8px;z-index:4}
     .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer}
     .dot.active{background:#fff}
+
+    /* ——— Mobile: texto más pequeño y las imágenes llenan (cover) ——— */
+    @media(max-width:900px){
+      .hero{height:52vw;max-height:320px}
+      .slide img{object-fit:cover}       /* llena la pantalla en móvil */
+      .hero-text h1{font-size:1.55rem}
+      .hero-text p{font-size:.9rem;margin-bottom:12px}
+      .btn .txt{display:none}.btn .icon{display:inline}
+    }
 
     /* ===== CONTENEDOR ===== */
     .container{max-width:1200px;margin:0 auto;padding:0 24px}
@@ -167,10 +178,12 @@
     </div>
   </header>
 
-  <!-- HERO / SLIDER (FADE) -->
+  <!-- HERO / SLIDER -->
   <section class="hero" id="inicio" aria-label="carrusel principal">
     <div class="slider" id="slider">
-      <!-- slides se inyectan por JS luego de validar que existan -->
+      <div class="slides-layer" id="slidesLayer"></div>
+
+      <!-- Controles -->
       <button class="arrow left" id="prev" aria-label="Anterior">
         <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
       </button>
@@ -179,6 +192,7 @@
       </button>
       <div class="dots" id="dots"></div>
 
+      <!-- Overlay + Texto -->
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-text">
         <h1>Diseño y elegancia natural para tus espacios</h1>
@@ -219,27 +233,27 @@
       <h2>Nuestros Servicios</h2>
       <div class="servicios">
         <article class="card">
-          <img src="./servicio-papel-tapiz.jpg?v=7" alt="Instalación de papel tapiz en paredes" loading="lazy">
+          <img src="./servicio-papel-tapiz.jpg?v=9" alt="Instalación de papel tapiz en paredes" loading="lazy">
           <h3>Papel Tapiz</h3>
         </article>
         <article class="card">
-          <img src="./servicio-murales.jpg?v=7" alt="Murales decorativos personalizados" loading="lazy">
+          <img src="./servicio-murales.jpg?v=9" alt="Murales decorativos personalizados" loading="lazy">
           <h3>Murales Decorativos</h3>
         </article>
         <article class="card">
-          <img src="./servicio-persianas.jpg?v=7" alt="Persianas y cortinas modernas" loading="lazy">
+          <img src="./servicio-persianas.jpg?v=9" alt="Persianas y cortinas modernas" loading="lazy">
           <h3>Persianas y Cortinas</h3>
         </article>
         <article class="card">
-          <img src="./servicio-pisos-techos.jpg?v=7" alt="Acabados en pisos y techos decorativos" loading="lazy">
+          <img src="./servicio-pisos-techos.jpg?v=9" alt="Acabados en pisos y techos decorativos" loading="lazy">
           <h3>Pisos y Techos</h3>
         </article>
         <article class="card">
-          <img src="./servicio-gypsum.jpg?v=7" alt="Diseños en gypsum para interiores" loading="lazy">
+          <img src="./servicio-gypsum.jpg?v=9" alt="Diseños en gypsum para interiores" loading="lazy">
           <h3>Gypsum Decorativo</h3>
         </article>
         <article class="card">
-          <img src="./servicio-paneles-decorativos.jpg?v=7" alt="Paneles decorativos para paredes" loading="lazy">
+          <img src="./servicio-paneles-decorativos.jpg?v=9" alt="Paneles decorativos para paredes" loading="lazy">
           <h3>Paneles Decorativos</h3>
         </article>
       </div>
@@ -284,28 +298,27 @@
       if (window.scrollY > 80) h.classList.add('scrolled'); else h.classList.remove('scrolled');
     });
 
-    /* ===== Slider por fade con pre-carga y tolerante a imágenes faltantes ===== */
-    const slider = document.getElementById('slider');
-    const dotsBox = document.getElementById('dots');
-    const btnPrev = document.getElementById('prev');
-    const btnNext = document.getElementById('next');
+    /* ===== Slider por fade: precarga, ignora faltantes, texto siempre visible ===== */
+    const slidesLayer = document.getElementById('slidesLayer');
+    const dotsBox     = document.getElementById('dots');
+    const btnPrev     = document.getElementById('prev');
+    const btnNext     = document.getElementById('next');
 
-    // Nombres esperados en la raíz
+    // Archivos esperados en raíz
     const heroCandidates = [
-      './hero-papel-tapiz.jpg?v=8',
-      './hero-persianas.jpg?v=8',
-      './hero-gypsum-techos.jpg?v=8',
-      './hero-paneles.jpg?v=8' // opcional
+      './hero-papel-tapiz.jpg?v=10',
+      './hero-persianas.jpg?v=10',
+      './hero-gypsum-techos.jpg?v=10',
+      './hero-paneles.jpg?v=10' // opcional
     ];
 
-    // Precarga y crea solo las que existan
-    const validSlides = [];
+    const valid = [];
     let pending = heroCandidates.length;
 
     heroCandidates.forEach(src => {
       const img = new Image();
       img.src = src;
-      img.onload = () => { validSlides.push(src); done(); };
+      img.onload = () => { valid.push(src); done(); };
       img.onerror = done;
     });
 
@@ -315,15 +328,10 @@
     }
 
     let idx = 0, auto, slides = [];
+
     function initSlider(){
-      if(!validSlides.length){
-        btnPrev.style.display = 'none';
-        btnNext.style.display = 'none';
-        dotsBox.style.display = 'none';
-        return;
-      }
-      // Crear nodos slide
-      validSlides.forEach((src,i)=>{
+      // Crear solo los slides válidos y dejarlos EN LA CAPA slides-layer (z-index:1)
+      valid.forEach((src,i)=>{
         const s = document.createElement('div');
         s.className = 'slide' + (i===0 ? ' show':'');
         const im = document.createElement('img');
@@ -331,9 +339,17 @@
         im.loading = i===0 ? 'eager' : 'lazy';
         im.src = src;
         s.appendChild(im);
-        slider.appendChild(s);
+        slidesLayer.appendChild(s);
       });
-      slides = Array.from(slider.querySelectorAll('.slide'));
+      slides = Array.from(slidesLayer.querySelectorAll('.slide'));
+
+      // Si no hay imágenes, ocultar controles
+      if(!slides.length){
+        btnPrev.style.display = 'none';
+        btnNext.style.display = 'none';
+        dotsBox.style.display = 'none';
+        return;
+      }
 
       // Dots
       dotsBox.innerHTML = '';
@@ -344,29 +360,25 @@
         dotsBox.appendChild(d);
       });
 
-      // Mostrar/ocultar controles si hay una sola imagen
       const multi = slides.length > 1;
       btnPrev.style.display = multi ? '' : 'none';
       btnNext.style.display = multi ? '' : 'none';
-      dotsBox.style.display   = multi ? '' : 'none';
-
+      dotsBox.style.display = multi ? '' : 'none';
       if(multi) startAuto();
+
+      // Handlers
+      btnNext.addEventListener('click', ()=>go(idx+1));
+      btnPrev.addEventListener('click', ()=>go(idx-1));
     }
 
     function go(i){
-      if(!slides.length) return;
       slides[idx].classList.remove('show');
       idx = (i + slides.length) % slides.length;
       slides[idx].classList.add('show');
       [...dotsBox.children].forEach((d,k)=>d.classList.toggle('active',k===idx));
       resetAuto();
     }
-    function next(){ go(idx+1); }
-    function prev(){ go(idx-1); }
-    btnNext.addEventListener('click', next);
-    btnPrev.addEventListener('click', prev);
-
-    function startAuto(){ auto = setInterval(next, 5000); }
+    function startAuto(){ auto = setInterval(()=>go(idx+1), 5000); }
     function resetAuto(){ clearInterval(auto); if(slides.length>1) startAuto(); }
 
     /* ===== Galería: imgal01.jpg ... imgal20.jpg (solo muestra las existentes) ===== */
