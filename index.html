@@ -2,12 +2,39 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Decorativo Panamá - Elegancia Natural</title>
-  <meta name="description" content="Decorativo Panamá: papeles tapiz, murales, persianas, gypsum, techos y paneles decorativos. Diseño elegante inspirado en la naturaleza.">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Decorativo Panamá | Papeles Tapiz, Murales, Persianas, Gypsum y Paneles</title>
+  <meta name="description" content="Decorativo Panamá transforma tus espacios con papeles tapiz, murales, persianas, gypsum, techos y paneles decorativos. Instalación profesional en Ciudad de Panamá." />
+  <link rel="canonical" href="https://decorativo-landing-2vav.vercel.app/" />
+
+  <!-- Preconexión y fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Preload hero (mejora LCP) -->
+  <link rel="preload" as="image" href="/img/hero-papel-tapiz.jpg" imagesrcset="/img/hero-papel-tapiz.jpg 1920w, /img/hero-papel-tapiz-1280.jpg 1280w" imagesizes="(max-width: 900px) 100vw, 100vw">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_PA">
+  <meta property="og:title" content="Decorativo Panamá | Elegancia Natural para tus espacios">
+  <meta property="og:description" content="Papeles tapiz, murales, persianas, gypsum, techos y paneles decorativos con instalación profesional en Ciudad de Panamá.">
+  <meta property="og:url" content="https://decorativo-landing-2vav.vercel.app/">
+  <meta property="og:image" content="/img/og-decorativo.jpg">
+  <meta property="og:site_name" content="Decorativo Panamá">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Decorativo Panamá | Elegancia Natural">
+  <meta name="twitter:description" content="Transformamos interiores con arte, técnica y materiales de alta calidad.">
+  <meta name="twitter:image" content="/img/og-decorativo.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/img/favicon.png" type="image/png">
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@300;500;700&display=swap');
     *{margin:0;padding:0;box-sizing:border-box}
     :root{
       --verde:#1e3d2b;
@@ -30,7 +57,6 @@
     .logo{
       font-family:'Playfair Display',serif;font-weight:600;font-size:1.6rem;white-space:nowrap
     }
-    /* nav centrado absoluto para que no dependa del ancho del logo */
     nav{
       position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
       display:flex;gap:28px;align-items:center;justify-content:center
@@ -50,7 +76,8 @@
     /* ===== HERO / CARRUSEL ===== */
     .hero{margin-top:64px;position:relative;width:100%;height:56vw;max-height:540px;overflow:hidden}
     .slides{display:flex;width:300%;height:100%;animation:slide 18s infinite}
-    .slides img{width:100%;height:100%;object-fit:cover;flex:1}
+    .slides picture{flex:1}
+    .slides img{width:100%;height:100%;object-fit:cover;display:block}
     @keyframes slide{
       0%{transform:translateX(0)}
       33%{transform:translateX(-100%)}
@@ -67,7 +94,6 @@
     .btn{background:var(--acento);color:#fff;padding:10px 24px;border-radius:24px;text-decoration:none;font-weight:600}
     .btn:hover{background:#5e8453}
 
-    /* móvil: muestra imagen completa (sin zoom) */
     @media(max-width:900px){
       .hero{height:52vw;max-height:320px}
       .slides img{object-fit:contain;background:#e8efe6}
@@ -95,7 +121,6 @@
       display:grid;grid-template-columns:repeat(6,1fr);
       gap:22px
     }
-    /* responsive del grid */
     @media(max-width:1100px){ .servicios{grid-template-columns:repeat(3,1fr)} }
     @media(max-width:700px){ .servicios{grid-template-columns:repeat(2,1fr)} }
 
@@ -149,12 +174,23 @@
   <!-- HERO / CARRUSEL -->
   <section class="hero" id="inicio" aria-label="carrusel principal">
     <div class="slides">
-      <!-- Puedes reemplazar por /images/banner-1.jpg, etc. -->
-      <img src="https://images.unsplash.com/photo-1618219944342-824e40a13285?auto=format&fit=crop&w=1600&q=80" alt="Papel tapiz decorativo">
-      <img src="https://images.unsplash.com/photo-1629123390252-7d7b51cbd9ec?auto=format&fit=crop&w=1600&q=80" alt="Persianas y cortinas modernas">
-      <img src="https://images.unsplash.com/photo-1616628188398-2c3e1e18d8c2?auto=format&fit=crop&w=1600&q=80" alt="Techos y gypsum decorativo">
+      <!-- Cada slide usa <picture> con WebP + JPG (SEO + performance) -->
+      <picture>
+        <source type="image/webp" srcset="/img/hero-papel-tapiz.webp 1920w, /img/hero-papel-tapiz-1280.webp 1280w" sizes="100vw">
+        <img src="/img/hero-papel-tapiz.jpg" srcset="/img/hero-papel-tapiz.jpg 1920w, /img/hero-papel-tapiz-1280.jpg 1280w" sizes="100vw" alt="Papel tapiz decorativo en sala moderna" loading="eager" fetchpriority="high">
+      </picture>
+
+      <picture>
+        <source type="image/webp" srcset="/img/hero-persianas.webp 1920w, /img/hero-persianas-1280.webp 1280w" sizes="100vw">
+        <img src="/img/hero-persianas.jpg" srcset="/img/hero-persianas.jpg 1920w, /img/hero-persianas-1280.jpg 1280w" sizes="100vw" alt="Persianas y cortinas modernas a medida" loading="lazy">
+      </picture>
+
+      <picture>
+        <source type="image/webp" srcset="/img/hero-gypsum-techos.webp 1920w, /img/hero-gypsum-techos-1280.webp 1280w" sizes="100vw">
+        <img src="/img/hero-gypsum-techos.jpg" srcset="/img/hero-gypsum-techos.jpg 1920w, /img/hero-gypsum-techos-1280.jpg 1280w" sizes="100vw" alt="Cielo raso gypsum y detalles decorativos en techo" loading="lazy">
+      </picture>
     </div>
-    <div class="hero-overlay"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-text">
       <h1>Diseño y elegancia natural para tus espacios</h1>
       <p>Transformamos interiores con armonía, arte y materiales de calidad excepcional.</p>
@@ -170,7 +206,7 @@
           <div class="video-embed">
             <iframe
               src="https://www.youtube.com/embed/0ghZEtlF8e0"
-              title="Decorativo Panamá"
+              title="Decorativo Panamá - Portafolio de proyectos"
               allowfullscreen
             ></iframe>
           </div>
@@ -188,44 +224,33 @@
     </div>
   </section>
 
-  <!-- SERVICIOS (6 tarjetas siempre visibles) -->
+  <!-- SERVICIOS (6 tarjetas) -->
   <section id="servicios">
     <div class="container">
       <h2>Nuestros Servicios</h2>
-      <div class="servicios">
-        <!-- 1 Papel Tapiz (verde que te gustó) -->
-        <article class="card">
-          <img src="https://images.unsplash.com/photo-1618219944342-824e40a13285?auto=format&fit=crop&w=1200&q=80" alt="Papel Tapiz">
+      <div class="servicios" itemscope itemtype="https://schema.org/Service">
+        <article class="card" itemprop="hasOfferCatalog">
+          <img src="/img/servicio-papel-tapiz.jpg" alt="Instalación de papel tapiz en paredes" loading="lazy">
           <h3>Papel Tapiz</h3>
         </article>
-
-        <!-- 2 Murales Decorativos -->
         <article class="card">
-          <img src="https://images.unsplash.com/photo-1631892205565-ec8c8fbcf7aa?auto=format&fit=crop&w=1200&q=80" alt="Murales Decorativos">
+          <img src="/img/servicio-murales.jpg" alt="Murales decorativos personalizados" loading="lazy">
           <h3>Murales Decorativos</h3>
         </article>
-
-        <!-- 3 Persianas y Cortinas -->
         <article class="card">
-          <img src="https://images.unsplash.com/photo-1629123390252-7d7b51cbd9ec?auto=format&fit=crop&w=1200&q=80" alt="Persianas y Cortinas">
+          <img src="/img/servicio-persianas.jpg" alt="Persianas y cortinas modernas" loading="lazy">
           <h3>Persianas y Cortinas</h3>
         </article>
-
-        <!-- 4 Pisos y Techos -->
         <article class="card">
-          <img src="https://images.unsplash.com/photo-1616628188398-2c3e1e18d8c2?auto=format&fit=crop&w=1200&q=80" alt="Pisos y Techos">
+          <img src="/img/servicio-pisos-techos.jpg" alt="Acabados en pisos y techos decorativos" loading="lazy">
           <h3>Pisos y Techos</h3>
         </article>
-
-        <!-- 5 Gypsum Decorativo -->
         <article class="card">
-          <img src="https://images.unsplash.com/photo-1588854337236-6889d631faa0?auto=format&fit=crop&w=1200&q=80" alt="Gypsum Decorativo">
+          <img src="/img/servicio-gypsum.jpg" alt="Diseños en gypsum para interiores" loading="lazy">
           <h3>Gypsum Decorativo</h3>
         </article>
-
-        <!-- 6 Paneles Decorativos -->
         <article class="card">
-          <img src="https://images.unsplash.com/photo-1595421514287-85b7b02dd9e5?auto=format&fit=crop&w=1200&q=80" alt="Paneles Decorativos">
+          <img src="/img/servicio-paneles-decorativos.jpg" alt="Paneles decorativos para paredes" loading="lazy">
           <h3>Paneles Decorativos</h3>
         </article>
       </div>
@@ -252,6 +277,25 @@
     </svg>
     <span>Cotizar</span>
   </a>
+
+  <!-- JSON-LD LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Decorativo Panamá",
+    "image": "https://decorativo-landing-2vav.vercel.app/img/og-decorativo.jpg",
+    "telephone": "+507 6925-7477",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Plaza Royal Park, Local 15Ab, Av. Ernesto T. Lefevre",
+      "addressLocality": "Ciudad de Panamá",
+      "addressCountry": "PA"
+    },
+    "url": "https://decorativo-landing-2vav.vercel.app",
+    "sameAs": []
+  }
+  </script>
 
   <script>
     // Header cambia a claro al hacer scroll
