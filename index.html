@@ -1,13 +1,27 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Decorativo Panamá | Papeles Tapiz, Murales, Persianas, Gypsum y Paneles</title>
-  <meta name="description" content="Decorativo Panamá transforma tus espacios con papeles tapiz, murales, persianas, gypsum, techos y paneles decorativos. Instalación profesional en Ciudad de Panamá." />
+  <title>Decorativo Panamá | Papel Tapiz, Murales, Persianas, Gypsum y Paneles</title>
+  <meta name="description" content="Instalación profesional de papel tapiz, murales, persianas, gypsum, pisos/techos y paneles decorativos en Ciudad de Panamá. Cotiza por WhatsApp hoy mismo." />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <link rel="canonical" href="https://decorativo-landing-2vav.vercel.app/" />
+  <link rel="alternate" hreflang="es-PA" href="https://decorativo-landing-2vav.vercel.app/" />
 
+  <!-- OG / Twitter -->
+  <meta property="og:title" content="Decorativo Panamá | Papel Tapiz, Murales, Persianas, Gypsum y Paneles">
+  <meta property="og:description" content="Diseño e instalación profesional en Ciudad de Panamá. Cotiza por WhatsApp.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://decorativo-landing-2vav.vercel.app/">
+  <meta property="og:image" content="https://decorativo-landing-2vav.vercel.app/hero-papel-tapiz.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Decorativo Panamá">
+  <meta name="twitter:description" content="Papel tapiz, murales, persianas, gypsum y más.">
+  <meta name="twitter:image" content="https://decorativo-landing-2vav.vercel.app/hero-papel-tapiz.jpg">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
@@ -17,7 +31,7 @@
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     :root{
-      --verde:#4e6b5a;      /* verde aclarado */
+      --verde:#4e6b5a;    /* verde aclarado */
       --verde-2:#63876f;
       --acento:#7ba46b;
       --bg:#f5f7f4;
@@ -25,84 +39,44 @@
     body{font-family:'Montserrat',sans-serif;background:var(--bg);color:#2a2a2a;overflow-x:hidden}
 
     /* ===== HEADER ===== */
-    header{
-      position:fixed;inset:0 0 auto 0;height:64px;
-      background:rgba(78,107,90,.92);backdrop-filter:blur(8px);
-      z-index:1000;color:#fff
-    }
-    .header-inner{
-      max-width:1200px;margin:0 auto;height:64px;padding:0 16px;
-      display:flex;align-items:center;gap:16px
-    }
-    .logo{
-      font-family:'Playfair Display',serif;font-weight:600;font-size:1.6rem;white-space:nowrap;flex:0 0 auto
-    }
+    header{position:fixed;inset:0 0 auto 0;height:64px;background:rgba(78,107,90,.92);backdrop-filter:blur(8px);z-index:1000;color:#fff}
+    .header-inner{max-width:1200px;margin:0 auto;height:64px;padding:0 16px;display:flex;align-items:center;gap:16px}
+    .logo{font-family:'Playfair Display',serif;font-weight:600;font-size:1.6rem;white-space:nowrap;flex:0 0 auto}
     nav{flex:1;display:flex;justify-content:center;gap:28px}
     nav a{color:#fff;text-decoration:none;font-weight:500}
     nav a:hover{color:#e7f0ea}
-    .cta-top{
-      flex:0 0 auto;background:#fff;color:var(--verde);padding:8px 14px;border-radius:8px;
-      text-decoration:none;font-weight:700;border:1px solid rgba(0,0,0,.05)
-    }
+    .cta-top{flex:0 0 auto;background:#fff;color:var(--verde);padding:8px 14px;border-radius:8px;text-decoration:none;font-weight:700;border:1px solid rgba(0,0,0,.05)}
     .cta-top:hover{background:#f6f8f7}
-
     .scrolled{background:#fff !important;color:var(--verde)}
-    .scrolled .logo{color:var(--verde)}
-    .scrolled nav a{color:var(--verde)}
-    .scrolled .cta-top{background:var(--verde);color:#fff;border-color:var(--verde)}
-    @media(max-width:900px){
-      nav{display:none}
-    }
+    .scrolled .logo{color:var(--verde)} .scrolled nav a{color:var(--verde)} .scrolled .cta-top{background:var(--verde);color:#fff;border-color:var(--verde)}
+    @media(max-width:900px){nav{display:none}}
 
-    /* ===== HERO / SLIDER (fade, full width) ===== */
+    /* ===== HERO / SLIDER (fade full-width) ===== */
     .hero{margin-top:64px;position:relative;width:100%;height:60vw;max-height:620px;overflow:hidden}
     .slider{position:relative;width:100%;height:100%}
     .slides-layer{position:absolute;inset:0;z-index:1;background:linear-gradient(#d9d9d9,#9b9b9b)}
     .slide{position:absolute;inset:0;opacity:0;transition:opacity .6s ease}
     .slide.show{opacity:1}
-    .slide img{
-      width:100%;height:100%;
-      object-fit:cover;              /* LLENA en escritorio */
-      display:block; background:#e8efe6;
-      filter:brightness(1.04) contrast(1.06) saturate(1.08);
-    }
+    .slide img{width:100%;height:100%;object-fit:cover;display:block;background:#e8efe6;filter:brightness(1.04) contrast(1.06) saturate(1.08)}
     .hero-overlay{position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(0,0,0,.22),rgba(0,0,0,.1));z-index:2}
-    .hero-text{
-      position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
-      text-align:center;color:#fff;padding:0 16px;text-shadow:0 2px 8px rgba(0,0,0,.45);z-index:3
-    }
+    .hero-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:0 16px;text-shadow:0 2px 8px rgba(0,0,0,.45);z-index:3}
     .hero-text h1{font-family:'Playfair Display',serif;font-size:2.8rem;line-height:1.15;margin-bottom:14px}
     .hero-text p{font-size:1.05rem;margin-bottom:16px}
-
-    .btn{
-      background:var(--acento);color:#fff;padding:12px 22px;border-radius:10px;
-      text-decoration:none;font-weight:700;letter-spacing:.2px;box-shadow:0 6px 16px rgba(0,0,0,.14);
-      display:inline-flex;align-items:center;gap:8px
-    }
+    .btn{background:var(--acento);color:#fff;padding:12px 22px;border-radius:10px;text-decoration:none;font-weight:700;letter-spacing:.2px;box-shadow:0 6px 16px rgba(0,0,0,.14);display:inline-flex;align-items:center;gap:8px}
     .btn:hover{background:#5e8453}
-    .only-mobile{display:none}
-    .only-desktop{display:inline}
-
-    .arrow{
-      position:absolute;top:50%;transform:translateY(-50%);
-      width:44px;height:44px;border-radius:10px;background:rgba(0,0,0,.35);
-      display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:4
-    }
-    .arrow:hover{background:rgba(0,0,0,.5)}
-    .arrow svg{width:22px;height:22px;fill:#fff}
+    .only-mobile{display:none}.only-desktop{display:inline}
+    .arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:10px;background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:4}
+    .arrow:hover{background:rgba(0,0,0,.5)} .arrow svg{width:22px;height:22px;fill:#fff}
     .arrow.left{left:12px}.arrow.right{right:12px}
     .dots{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);display:flex;gap:8px;z-index:4}
     .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer}
     .dot.active{background:#fff}
-
-    /* ——— Mobile: solo título, botón “Cotizar papel tapiz”, imágenes cover ——— */
     @media(max-width:900px){
       .hero{height:56vw;max-height:360px}
       .slide img{object-fit:cover}
       .hero-text h1{font-size:1.6rem;margin-bottom:10px}
-      .hero-text p{display:none}                 /* ocultar subtítulo en móvil */
-      .only-mobile{display:inline}
-      .only-desktop{display:none}
+      .hero-text p{display:none}
+      .only-mobile{display:inline}.only-desktop{display:none}
     }
 
     /* ===== CONTENEDOR ===== */
@@ -118,18 +92,18 @@
     .video-text h2{font-family:'Playfair Display',serif;color:var(--verde);font-size:2rem;margin-bottom:12px}
     .video-text p{color:#444;line-height:1.8;margin-bottom:20px}
 
-    /* ===== SERVICIOS ===== */
+    /* ===== SERVICIOS (cards clicables) ===== */
     #servicios{background:#f0f4f1;padding:80px 0;text-align:center}
     #servicios h2{font-family:'Playfair Display',serif;color:var(--verde);font-size:2.2rem;margin-bottom:24px}
     .servicios{display:grid;grid-template-columns:repeat(6,1fr);gap:22px}
     @media(max-width:1100px){ .servicios{grid-template-columns:repeat(3,1fr)} }
     @media(max-width:700px){ .servicios{grid-template-columns:repeat(2,1fr)} }
-    .card{position:relative;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.07);transition:transform .25s ease}
+    .card{position:relative;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.07);transition:transform .25s ease;cursor:pointer;text-decoration:none;color:inherit}
     .card:hover{transform:translateY(-4px)}
     .card img{width:100%;height:260px;object-fit:cover;display:block}
     .card h3{position:absolute;left:14px;bottom:14px;margin:0;color:#fff;font-family:'Playfair Display',serif;font-size:1.15rem;text-shadow:0 2px 6px rgba(0,0,0,.55)}
 
-    /* ===== GALERÍA DINÁMICA ===== */
+    /* ===== GALERÍA ===== */
     #galeria{background:#fff;padding:72px 0}
     #galeria h2{font-family:'Playfair Display',serif;color:var(--verde);text-align:center;font-size:2rem;margin-bottom:24px}
     .grid-gal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1200px;margin:0 auto;padding:0 24px}
@@ -148,15 +122,45 @@
     .rights{font-size:.9rem;color:#e1e7e3;margin-top:6px}
 
     /* ===== WHATSAPP flotante (rectangular, “Chat”) ===== */
-    .wa-float{
-      position:fixed;right:18px;bottom:18px;
-      height:48px;padding:0 14px;border-radius:10px;
-      display:flex;align-items:center;gap:10px;
-      background:#25d366;box-shadow:0 10px 22px rgba(0,0,0,.25);z-index:1200;
-      color:#fff;text-decoration:none;font-weight:800;letter-spacing:.2px
-    }
+    .wa-float{position:fixed;right:18px;bottom:18px;height:48px;padding:0 14px;border-radius:10px;display:flex;align-items:center;gap:10px;background:#25d366;box-shadow:0 10px 22px rgba(0,0,0,.25);z-index:1200;color:#fff;text-decoration:none;font-weight:800;letter-spacing:.2px}
     .wa-float svg{width:22px;height:22px;fill:#fff}
   </style>
+
+  <!-- JSON-LD LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"HomeAndConstructionBusiness",
+    "name":"Decorativo Panamá",
+    "image":"https://decorativo-landing-2vav.vercel.app/hero-papel-tapiz.jpg",
+    "url":"https://decorativo-landing-2vav.vercel.app/",
+    "telephone":"+50769257477",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"Plaza Royal Park, Local 15Ab (al lado de Figura Rostro)",
+      "addressLocality":"Ciudad de Panamá",
+      "addressCountry":"PA"
+    },
+    "areaServed":"Panamá",
+    "priceRange":"$$",
+    "sameAs":[
+      "https://wa.me/50769257477"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD FAQ (ayuda SEO long-tail) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"¿Instalan papel tapiz en toda Ciudad de Panamá?","acceptedAnswer":{"@type":"Answer","text":"Sí, atendemos Ciudad de Panamá y áreas cercanas. Cotiza por WhatsApp para coordinar visita técnica y mostrar catálogos."}},
+      {"@type":"Question","name":"¿Cuánto tarda una instalación estándar?","acceptedAnswer":{"@type":"Answer","text":"Una pared estándar suele demorar entre 2 y 4 horas, según superficie y preparación requerida."}},
+      {"@type":"Question","name":"¿Qué marcas y materiales usan?","acceptedAnswer":{"@type":"Answer","text":"Trabajamos con materiales de calidad para alta durabilidad: vinílicos lavables, murales personalizados, gypsum y acabados selectos."}}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -180,7 +184,6 @@
     <div class="slider" id="slider">
       <div class="slides-layer" id="slidesLayer"></div>
 
-      <!-- Controles -->
       <button class="arrow left" id="prev" aria-label="Anterior">
         <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
       </button>
@@ -189,7 +192,6 @@
       </button>
       <div class="dots" id="dots"></div>
 
-      <!-- Overlay + Texto -->
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-text">
         <h1>Diseño y elegancia natural en tus espacios</h1>
@@ -208,11 +210,7 @@
       <div class="video-grid">
         <div class="video-box">
           <div class="video-embed">
-            <iframe
-              src="https://www.youtube.com/embed/0ghZEtlF8e0"
-              title="Decorativo Panamá - Portafolio de proyectos"
-              allowfullscreen
-            ></iframe>
+            <iframe src="https://www.youtube.com/embed/0ghZEtlF8e0" title="Decorativo Panamá - Portafolio de proyectos" allowfullscreen></iframe>
           </div>
         </div>
         <div class="video-text">
@@ -224,40 +222,45 @@
     </div>
   </section>
 
-  <!-- SERVICIOS -->
+  <!-- SERVICIOS (clic = WhatsApp con nombre del servicio) -->
   <section id="servicios">
     <div class="container">
       <h2>Nuestros Servicios</h2>
-      <div class="servicios">
-        <article class="card">
-          <img src="./servicio-papel-tapiz.jpg?v=10" alt="Instalación de papel tapiz en paredes" loading="lazy">
+      <div class="servicios" id="gridServicios">
+        <a class="card" href="#" data-service="Papel Tapiz">
+          <img src="./servicio-papel-tapiz.jpg?v=11" alt="Instalación de papel tapiz en paredes" loading="lazy">
           <h3>Papel Tapiz</h3>
-        </article>
-        <article class="card">
-          <img src="./servicio-murales.jpg?v=10" alt="Murales decorativos personalizados" loading="lazy">
+        </a>
+
+        <a class="card" href="#" data-service="Murales Decorativos">
+          <img src="./servicio-murales.jpg?v=11" alt="Murales decorativos personalizados" loading="lazy">
           <h3>Murales Decorativos</h3>
-        </article>
-        <article class="card">
-          <img src="./servicio-persianas.jpg?v=10" alt="Persianas y cortinas modernas" loading="lazy">
+        </a>
+
+        <a class="card" href="#" data-service="Persianas y Cortinas">
+          <img src="./servicio-persianas.jpg?v=11" alt="Persianas y cortinas modernas" loading="lazy">
           <h3>Persianas y Cortinas</h3>
-        </article>
-        <article class="card">
-          <img src="./servicio-pisos-techos.jpg?v=10" alt="Acabados en pisos y techos decorativos" loading="lazy">
+        </a>
+
+        <a class="card" href="#" data-service="Pisos y Techos">
+          <img src="./servicio-pisos-techos.jpg?v=11" alt="Acabados en pisos y techos decorativos" loading="lazy">
           <h3>Pisos y Techos</h3>
-        </article>
-        <article class="card">
-          <img src="./servicio-gypsum.jpg?v=10" alt="Diseños en gypsum para interiores" loading="lazy">
+        </a>
+
+        <a class="card" href="#" data-service="Gypsum Decorativo">
+          <img src="./servicio-gypsum.jpg?v=11" alt="Diseños en gypsum para interiores" loading="lazy">
           <h3>Gypsum Decorativo</h3>
-        </article>
-        <article class="card">
-          <img src="./servicio-paneles-decorativos.jpg?v=10" alt="Paneles decorativos para paredes" loading="lazy">
+        </a>
+
+        <a class="card" href="#" data-service="Paneles Decorativos">
+          <img src="./servicio-paneles-decorativos.jpg?v=11" alt="Paneles decorativos para paredes" loading="lazy">
           <h3>Paneles Decorativos</h3>
-        </article>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- GALERÍA DINÁMICA -->
+  <!-- GALERÍA -->
   <section id="galeria">
     <h2 style="text-align:center;font-family:'Playfair Display',serif;color:var(--verde);font-size:2rem;margin-bottom:24px">Galería de proyectos</h2>
     <div class="grid-gal" id="gridGal"></div>
@@ -275,9 +278,9 @@
     </div>
   </footer>
 
-  <!-- BOTÓN WHATSAPP flotante (rectangular, “Chat”) -->
+  <!-- WhatsApp flotante -->
   <a class="wa-float" target="_blank"
-     href="https://wa.me/50769257477?text=Hola!%20Deseo%20hacer%20una%20consulta%20sobre%20papel%20tapiz%20%F0%9F%8E%A8"
+     href="https://wa.me/50769257477?text=Hola!%20Deseo%20hacer%20una%20consulta%20%F0%9F%91%8B"
      aria-label="Chat por WhatsApp">
     <svg viewBox="0 0 32 32" aria-hidden="true">
       <path d="M19.11 17.55c-.28-.14-1.62-.8-1.87-.9s-.44-.14-.62.14c-.18.28-.71.9-.87 1.08-.16.18-.32.21-.59.07-.28-.14-1.14-.42-2.17-1.35-.8-.71-1.34-1.58-1.5-1.86-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.48.14-.16.18-.28.28-.46.09-.18.05-.35-.02-.49-.07-.14-.62-1.49-.85-2.05-.22-.52-.44-.45-.62-.46h-.53c-.18 0-.49.07-.75.35-.26.28-.99.96-.99 2.33 0 1.37 1.02 2.7 1.16 2.89.14.18 2 3.05 4.84 4.28.68.29 1.21.46 1.62.59.68.22 1.31.19 1.81.12.55-.08 1.62-.66 1.85-1.3.23-.64.23-1.19.16-1.3-.07-.11-.25-.18-.53-.32zM16.02 3.2C9.84 3.2 4.84 8.2 4.84 14.38c0 2.48.81 4.77 2.17 6.62L6 28.8l7.98-1.99c1.78.98 3.83 1.54 6.04 1.54 6.18 0 11.18-5 11.18-11.18S22.2 3.2 16.02 3.2zm0 20.17c-1.96 0-3.78-.58-5.29-1.58l-.38-.25-4.73 1.18 1.26-4.6-.25-.39a9.176 9.176 0 0 1-1.43-4.9c0-5.09 4.13-9.22 9.22-9.22s9.22 4.13 9.22 9.22-4.13 9.22-9.22 9.22z"/>
@@ -289,24 +292,23 @@
     // Año dinámico
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Header claro al hacer scroll
+    // Header cambia con scroll
     window.addEventListener('scroll', () => {
       const h = document.getElementById('header');
       if (window.scrollY > 80) h.classList.add('scrolled'); else h.classList.remove('scrolled');
     });
 
-    /* ===== Slider por fade: precarga, ignora faltantes ===== */
+    /* ===== Slider por fade ===== */
     const slidesLayer = document.getElementById('slidesLayer');
     const dotsBox     = document.getElementById('dots');
     const btnPrev     = document.getElementById('prev');
     const btnNext     = document.getElementById('next');
 
-    // Archivos esperados en raíz
     const heroCandidates = [
-      './hero-papel-tapiz.jpg?v=11',
-      './hero-persianas.jpg?v=11',
-      './hero-gypsum-techos.jpg?v=11',
-      './hero-paneles.jpg?v=11' // opcional
+      './hero-papel-tapiz.jpg?v=12',
+      './hero-persianas.jpg?v=12',
+      './hero-gypsum-techos.jpg?v=12',
+      './hero-paneles.jpg?v=12' // opcional
     ];
 
     const valid = [];
@@ -319,32 +321,19 @@
       img.onerror = done;
     });
 
-    function done(){
-      pending--;
-      if(pending<=0) initSlider();
-    }
+    function done(){ if(--pending<=0) initSlider(); }
 
     let idx = 0, auto, slides = [];
-
     function initSlider(){
       valid.forEach((src,i)=>{
         const s = document.createElement('div');
         s.className = 'slide' + (i===0 ? ' show':'');
         const im = document.createElement('img');
-        im.alt = 'Banner Decorativo Panamá';
-        im.loading = i===0 ? 'eager' : 'lazy';
-        im.src = src;
-        s.appendChild(im);
-        slidesLayer.appendChild(s);
+        im.alt = 'Banner Decorativo Panamá'; im.loading = i===0 ? 'eager' : 'lazy'; im.src = src;
+        s.appendChild(im); slidesLayer.appendChild(s);
       });
       slides = Array.from(slidesLayer.querySelectorAll('.slide'));
-
-      if(!slides.length){
-        btnPrev.style.display = 'none';
-        btnNext.style.display = 'none';
-        dotsBox.style.display = 'none';
-        return;
-      }
+      if(!slides.length){ btnPrev.style.display=btnNext.style.display=dotsBox.style.display='none'; return; }
 
       dotsBox.innerHTML = '';
       slides.forEach((_,i)=>{
@@ -354,9 +343,8 @@
         dotsBox.appendChild(d);
       });
 
-      const multi = slides.length > 1;
-      btnPrev.style.display = multi ? '' : 'none';
-      btnNext.style.display = multi ? '' : 'none';
+      const multi = slides.length>1;
+      btnPrev.style.display = btnNext.style.display = multi ? '' : 'none';
       dotsBox.style.display = multi ? '' : 'none';
       if(multi) startAuto();
 
@@ -374,16 +362,27 @@
     function startAuto(){ auto = setInterval(()=>go(idx+1), 5000); }
     function resetAuto(){ clearInterval(auto); if(slides.length>1) startAuto(); }
 
-    /* ===== Galería: imgal01.jpg ... imgal20.jpg (solo muestra las existentes) ===== */
+    /* ===== Galería dinámica ===== */
     const grid = document.getElementById('gridGal');
-    const maxImgs = 20;
-    for(let i=1;i<=maxImgs;i++){
+    for(let i=1;i<=20;i++){
       const n = String(i).padStart(2,'0');
       const src = `./imgal${n}.jpg?v=1`;
       const img = new Image();
       img.src = src; img.loading='lazy'; img.alt = 'Proyecto Decorativo Panamá';
       img.onload = ()=> grid.appendChild(img);
     }
+
+    /* ===== Servicios -> WhatsApp con nombre de servicio ===== */
+    const waBase = "https://wa.me/50769257477?text=";
+    document.querySelectorAll('.card[data-service]').forEach(card=>{
+      card.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const servicio = card.getAttribute('data-service');
+        const msg = `Hola, quiero cotizar ${servicio}. ¿Me ayudas por favor?`;
+        const url = waBase + encodeURIComponent(msg);
+        window.open(url, '_blank');
+      });
+    });
   </script>
 </body>
 </html>
