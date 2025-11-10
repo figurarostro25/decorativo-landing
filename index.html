@@ -54,57 +54,55 @@
       nav{display:none}
     }
 
-    /* ===== HERO / SLIDER (fade) ===== */
-    .hero{margin-top:64px;position:relative;width:100%;height:56vw;max-height:540px;overflow:hidden}
-    .slider{position:relative;width:100%;height:100%;background:linear-gradient(#d9d9d9,#9b9b9b)}
-    /* Capa de slides debajo del texto/overlay */
-    .slides-layer{position:absolute;inset:0;z-index:1}
+    /* ===== HERO / SLIDER (fade, full width) ===== */
+    .hero{margin-top:64px;position:relative;width:100%;height:60vw;max-height:620px;overflow:hidden}
+    .slider{position:relative;width:100%;height:100%}
+    .slides-layer{position:absolute;inset:0;z-index:1;background:linear-gradient(#d9d9d9,#9b9b9b)}
     .slide{position:absolute;inset:0;opacity:0;transition:opacity .6s ease}
     .slide.show{opacity:1}
     .slide img{
       width:100%;height:100%;
-      object-fit:contain;             /* desktop sin recorte */
-      display:block;background:#e8efe6;
-      filter:brightness(1.06) contrast(1.06) saturate(1.12);
+      object-fit:cover;              /* LLENA en escritorio */
+      display:block; background:#e8efe6;
+      filter:brightness(1.04) contrast(1.06) saturate(1.08);
     }
-    /* Overlay y texto por encima de las imágenes */
-    .hero-overlay{position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(0,0,0,.18),rgba(0,0,0,.10));z-index:2}
+    .hero-overlay{position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(0,0,0,.22),rgba(0,0,0,.1));z-index:2}
     .hero-text{
       position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
       text-align:center;color:#fff;padding:0 16px;text-shadow:0 2px 8px rgba(0,0,0,.45);z-index:3
     }
-    .hero-text h1{font-family:'Playfair Display',serif;font-size:2.4rem;line-height:1.15;margin-bottom:10px}
-    .hero-text p{font-size:1.02rem;margin-bottom:16px}
+    .hero-text h1{font-family:'Playfair Display',serif;font-size:2.8rem;line-height:1.15;margin-bottom:14px}
+    .hero-text p{font-size:1.05rem;margin-bottom:16px}
 
-    /* Botón banner: desktop “Cotizar”, móvil “$?” */
     .btn{
-      background:var(--acento);color:#fff;padding:12px 22px;border-radius:8px;
+      background:var(--acento);color:#fff;padding:12px 22px;border-radius:10px;
       text-decoration:none;font-weight:700;letter-spacing:.2px;box-shadow:0 6px 16px rgba(0,0,0,.14);
       display:inline-flex;align-items:center;gap:8px
     }
     .btn:hover{background:#5e8453}
-    .btn .txt{display:inline}.btn .icon{display:none}
+    .only-mobile{display:none}
+    .only-desktop{display:inline}
 
-    /* Controles por encima de todo */
     .arrow{
       position:absolute;top:50%;transform:translateY(-50%);
-      width:44px;height:44px;border-radius:8px;background:rgba(0,0,0,.35);
+      width:44px;height:44px;border-radius:10px;background:rgba(0,0,0,.35);
       display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:4
     }
     .arrow:hover{background:rgba(0,0,0,.5)}
     .arrow svg{width:22px;height:22px;fill:#fff}
     .arrow.left{left:12px}.arrow.right{right:12px}
-    .dots{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:8px;z-index:4}
+    .dots{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);display:flex;gap:8px;z-index:4}
     .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer}
     .dot.active{background:#fff}
 
-    /* ——— Mobile: texto más pequeño y las imágenes llenan (cover) ——— */
+    /* ——— Mobile: solo título, botón “Cotizar papel tapiz”, imágenes cover ——— */
     @media(max-width:900px){
-      .hero{height:52vw;max-height:320px}
-      .slide img{object-fit:cover}       /* llena la pantalla en móvil */
-      .hero-text h1{font-size:1.55rem}
-      .hero-text p{font-size:.9rem;margin-bottom:12px}
-      .btn .txt{display:none}.btn .icon{display:inline}
+      .hero{height:56vw;max-height:360px}
+      .slide img{object-fit:cover}
+      .hero-text h1{font-size:1.6rem;margin-bottom:10px}
+      .hero-text p{display:none}                 /* ocultar subtítulo en móvil */
+      .only-mobile{display:inline}
+      .only-desktop{display:none}
     }
 
     /* ===== CONTENEDOR ===== */
@@ -149,16 +147,15 @@
     .footer-bottom{font-size:.9rem;color:#e7ece8;margin-top:8px}
     .rights{font-size:.9rem;color:#e1e7e3;margin-top:6px}
 
-    /* ===== WHATSAPP flotante ===== */
+    /* ===== WHATSAPP flotante (rectangular, “Chat”) ===== */
     .wa-float{
       position:fixed;right:18px;bottom:18px;
-      width:68px;height:68px;border-radius:12px;
-      display:flex;align-items:center;justify-content:center;
+      height:48px;padding:0 14px;border-radius:10px;
+      display:flex;align-items:center;gap:10px;
       background:#25d366;box-shadow:0 10px 22px rgba(0,0,0,.25);z-index:1200;
-      color:#fff;text-decoration:none;font-weight:700
+      color:#fff;text-decoration:none;font-weight:800;letter-spacing:.2px
     }
-    .wa-float svg{width:28px;height:28px;fill:#fff;margin-right:8px}
-    .wa-float span{font-size:.95rem}
+    .wa-float svg{width:22px;height:22px;fill:#fff}
   </style>
 </head>
 <body>
@@ -195,11 +192,11 @@
       <!-- Overlay + Texto -->
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-text">
-        <h1>Diseño y elegancia natural para tus espacios</h1>
-        <p>Transformamos interiores con armonía, arte y materiales de calidad excepcional.</p>
+        <h1>Diseño y elegancia natural en tus espacios</h1>
+        <p class="only-desktop">Transformamos interiores con armonía, arte y materiales de calidad excepcional.</p>
         <a class="btn" href="#servicios">
-          <span class="txt">Cotizar</span>
-          <span class="icon">$?</span>
+          <span class="only-desktop">Cotizar</span>
+          <span class="only-mobile">Cotizar papel tapiz</span>
         </a>
       </div>
     </div>
@@ -233,27 +230,27 @@
       <h2>Nuestros Servicios</h2>
       <div class="servicios">
         <article class="card">
-          <img src="./servicio-papel-tapiz.jpg?v=9" alt="Instalación de papel tapiz en paredes" loading="lazy">
+          <img src="./servicio-papel-tapiz.jpg?v=10" alt="Instalación de papel tapiz en paredes" loading="lazy">
           <h3>Papel Tapiz</h3>
         </article>
         <article class="card">
-          <img src="./servicio-murales.jpg?v=9" alt="Murales decorativos personalizados" loading="lazy">
+          <img src="./servicio-murales.jpg?v=10" alt="Murales decorativos personalizados" loading="lazy">
           <h3>Murales Decorativos</h3>
         </article>
         <article class="card">
-          <img src="./servicio-persianas.jpg?v=9" alt="Persianas y cortinas modernas" loading="lazy">
+          <img src="./servicio-persianas.jpg?v=10" alt="Persianas y cortinas modernas" loading="lazy">
           <h3>Persianas y Cortinas</h3>
         </article>
         <article class="card">
-          <img src="./servicio-pisos-techos.jpg?v=9" alt="Acabados en pisos y techos decorativos" loading="lazy">
+          <img src="./servicio-pisos-techos.jpg?v=10" alt="Acabados en pisos y techos decorativos" loading="lazy">
           <h3>Pisos y Techos</h3>
         </article>
         <article class="card">
-          <img src="./servicio-gypsum.jpg?v=9" alt="Diseños en gypsum para interiores" loading="lazy">
+          <img src="./servicio-gypsum.jpg?v=10" alt="Diseños en gypsum para interiores" loading="lazy">
           <h3>Gypsum Decorativo</h3>
         </article>
         <article class="card">
-          <img src="./servicio-paneles-decorativos.jpg?v=9" alt="Paneles decorativos para paredes" loading="lazy">
+          <img src="./servicio-paneles-decorativos.jpg?v=10" alt="Paneles decorativos para paredes" loading="lazy">
           <h3>Paneles Decorativos</h3>
         </article>
       </div>
@@ -278,14 +275,14 @@
     </div>
   </footer>
 
-  <!-- BOTÓN WHATSAPP flotante -->
+  <!-- BOTÓN WHATSAPP flotante (rectangular, “Chat”) -->
   <a class="wa-float" target="_blank"
-     href="https://wa.me/50769257477?text=Hola!%20Deseo%20cotizar%20un%20proyecto%20decorativo"
-     aria-label="Cotizar por WhatsApp">
+     href="https://wa.me/50769257477?text=Hola!%20Deseo%20hacer%20una%20consulta%20sobre%20papel%20tapiz%20%F0%9F%8E%A8"
+     aria-label="Chat por WhatsApp">
     <svg viewBox="0 0 32 32" aria-hidden="true">
       <path d="M19.11 17.55c-.28-.14-1.62-.8-1.87-.9s-.44-.14-.62.14c-.18.28-.71.9-.87 1.08-.16.18-.32.21-.59.07-.28-.14-1.14-.42-2.17-1.35-.8-.71-1.34-1.58-1.5-1.86-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.48.14-.16.18-.28.28-.46.09-.18.05-.35-.02-.49-.07-.14-.62-1.49-.85-2.05-.22-.52-.44-.45-.62-.46h-.53c-.18 0-.49.07-.75.35-.26.28-.99.96-.99 2.33 0 1.37 1.02 2.7 1.16 2.89.14.18 2 3.05 4.84 4.28.68.29 1.21.46 1.62.59.68.22 1.31.19 1.81.12.55-.08 1.62-.66 1.85-1.3.23-.64.23-1.19.16-1.3-.07-.11-.25-.18-.53-.32zM16.02 3.2C9.84 3.2 4.84 8.2 4.84 14.38c0 2.48.81 4.77 2.17 6.62L6 28.8l7.98-1.99c1.78.98 3.83 1.54 6.04 1.54 6.18 0 11.18-5 11.18-11.18S22.2 3.2 16.02 3.2zm0 20.17c-1.96 0-3.78-.58-5.29-1.58l-.38-.25-4.73 1.18 1.26-4.6-.25-.39a9.176 9.176 0 0 1-1.43-4.9c0-5.09 4.13-9.22 9.22-9.22s9.22 4.13 9.22 9.22-4.13 9.22-9.22 9.22z"/>
     </svg>
-    <span>Cotizar</span>
+    <span>Chat</span>
   </a>
 
   <script>
@@ -298,7 +295,7 @@
       if (window.scrollY > 80) h.classList.add('scrolled'); else h.classList.remove('scrolled');
     });
 
-    /* ===== Slider por fade: precarga, ignora faltantes, texto siempre visible ===== */
+    /* ===== Slider por fade: precarga, ignora faltantes ===== */
     const slidesLayer = document.getElementById('slidesLayer');
     const dotsBox     = document.getElementById('dots');
     const btnPrev     = document.getElementById('prev');
@@ -306,10 +303,10 @@
 
     // Archivos esperados en raíz
     const heroCandidates = [
-      './hero-papel-tapiz.jpg?v=10',
-      './hero-persianas.jpg?v=10',
-      './hero-gypsum-techos.jpg?v=10',
-      './hero-paneles.jpg?v=10' // opcional
+      './hero-papel-tapiz.jpg?v=11',
+      './hero-persianas.jpg?v=11',
+      './hero-gypsum-techos.jpg?v=11',
+      './hero-paneles.jpg?v=11' // opcional
     ];
 
     const valid = [];
@@ -330,7 +327,6 @@
     let idx = 0, auto, slides = [];
 
     function initSlider(){
-      // Crear solo los slides válidos y dejarlos EN LA CAPA slides-layer (z-index:1)
       valid.forEach((src,i)=>{
         const s = document.createElement('div');
         s.className = 'slide' + (i===0 ? ' show':'');
@@ -343,7 +339,6 @@
       });
       slides = Array.from(slidesLayer.querySelectorAll('.slide'));
 
-      // Si no hay imágenes, ocultar controles
       if(!slides.length){
         btnPrev.style.display = 'none';
         btnNext.style.display = 'none';
@@ -351,7 +346,6 @@
         return;
       }
 
-      // Dots
       dotsBox.innerHTML = '';
       slides.forEach((_,i)=>{
         const d = document.createElement('div');
@@ -366,7 +360,6 @@
       dotsBox.style.display = multi ? '' : 'none';
       if(multi) startAuto();
 
-      // Handlers
       btnNext.addEventListener('click', ()=>go(idx+1));
       btnPrev.addEventListener('click', ()=>go(idx-1));
     }
